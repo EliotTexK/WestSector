@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg2226txxdjp6"]
+
+[ext_resource type="Texture2D" uid="uid://bg8gigfr11lac" path="res://Space Cowboy.png" id="1_l7aig"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterRig" type="Node" parent="."]
+
+[node name="Torso" type="Polygon2D" parent="CharacterRig"]
+position = Vector2(578.766, 353.906)
+offset = Vector2(-413, -535)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(336, 546, 413, 558, 486, 548, 508, 515, 498, 411, 512, 367, 480, 323, 448, 315, 420, 346, 377, 311, 332, 331, 309, 375, 326, 420, 314, 428, 309, 512)
+uv = PackedVector2Array(336, 546, 413, 558, 486, 548, 508, 515, 498, 411, 512, 367, 480, 323, 448, 315, 420, 346, 377, 311, 332, 331, 309, 375, 326, 420, 314, 428, 309, 512)
+
+[node name="RightArmUpper" type="Polygon2D" parent="CharacterRig/Torso"]
+position = Vector2(-89.7657, -173.906)
+rotation = -0.36077
+offset = Vector2(-238.594, -204.766)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/RightArmUpper", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/RightArmUpper/RightArmLower", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/LeftArmUpper", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/LeftArmUpper/LeftArmLower", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/LeftLegUpper", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/LeftLegUpper/LeftLegLower", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/RightLegUpper", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Torso/RightLegUpper/RightLegLower", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="RightArmLower" type="Polygon2D" parent="CharacterRig/Torso/RightArmUpper"]
+position = Vector2(-94.807, -0.790405)
+rotation = -1.05795
+offset = Vector2(-239, -204)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="RightHand" type="Polygon2D" parent="CharacterRig/Torso/RightArmUpper/RightArmLower"]
+position = Vector2(-112.746, -1.2037)
+rotation = 0.829573
+scale = Vector2(1, 1)
+offset = Vector2(-208, -390)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(245.918, 401.531, 270.408, 380.612, 217.857, 322.959, 187.245, 373.469, 172.449, 362.755, 152.551, 369.388, 143.367, 400, 151.02, 428.571, 174.49, 452.551, 209.694, 456.122, 222.959, 448.469, 225.51, 421.939, 234.184, 438.265, 256.633, 429.592, 258.673, 411.735)
+uv = PackedVector2Array(245.918, 401.531, 270.408, 380.612, 217.857, 322.959, 187.245, 373.469, 172.449, 362.755, 152.551, 369.388, 143.367, 400, 151.02, 428.571, 174.49, 452.551, 209.694, 456.122, 222.959, 448.469, 225.51, 421.939, 234.184, 438.265, 256.633, 429.592, 258.673, 411.735)
+
+[node name="LeftArmUpper" type="Polygon2D" parent="CharacterRig/Torso"]
+z_index = -1
+position = Vector2(74.2341, -162.906)
+rotation = -2.14502
+scale = Vector2(1, 1)
+offset = Vector2(-238.594, -204.766)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="LeftArmLower" type="Polygon2D" parent="CharacterRig/Torso/LeftArmUpper"]
+position = Vector2(-96.2115, 8.26704)
+rotation = -1.70287
+offset = Vector2(-239, -204)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="LeftHand" type="Polygon2D" parent="CharacterRig/Torso/LeftArmUpper/LeftArmLower"]
+position = Vector2(-103.133, 6.13171)
+rotation = -2.25288
+offset = Vector2(-575, -343)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(528.061, 355.612, 587.755, 398.98, 603.571, 355.102, 632.653, 329.592, 617.857, 290.306, 622.449, 251.531, 655.102, 209.184, 649.49, 189.796, 629.592, 190.306, 550, 280.612, 555.612, 306.633, 557.143, 323.469)
+uv = PackedVector2Array(528.061, 355.612, 587.755, 398.98, 603.571, 355.102, 632.653, 329.592, 617.857, 290.306, 622.449, 251.531, 655.102, 209.184, 649.49, 189.796, 629.592, 190.306, 550, 280.612, 555.612, 306.633, 557.143, 323.469)
+
+[node name="LeftLegUpper" type="Polygon2D" parent="CharacterRig/Torso"]
+position = Vector2(-50, 15)
+rotation = -1.44326
+scale = Vector2(1, 1.28)
+offset = Vector2(-238.594, -204.766)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="LeftLegLower" type="Polygon2D" parent="CharacterRig/Torso/LeftLegUpper"]
+position = Vector2(-89.3311, -0.989624)
+rotation = -0.145711
+scale = Vector2(0.967932, 1.05043)
+skew = -0.181719
+offset = Vector2(-238.594, -204.766)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="LeftBoot" type="Polygon2D" parent="CharacterRig/Torso/LeftLegUpper/LeftLegLower"]
+position = Vector2(-107.491, -5.71918)
+rotation = 1.74695
+scale = Vector2(0.771928, 1.02107)
+skew = -0.132819
+offset = Vector2(-354.548, -688.45)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(319.565, 702.174, 308.696, 609.783, 343.478, 633.696, 405.435, 610.87, 398.913, 698.913, 407.609, 747.826, 289.13, 745.652, 280.435, 731.522)
+uv = PackedVector2Array(319.565, 702.174, 308.696, 609.783, 343.478, 633.696, 405.435, 610.87, 398.913, 698.913, 407.609, 747.826, 289.13, 745.652, 280.435, 731.522)
+
+[node name="RightLegUpper" type="Polygon2D" parent="CharacterRig/Torso"]
+position = Vector2(53, 18)
+rotation = -1.85329
+scale = Vector2(1, 1.28)
+offset = Vector2(-238.594, -204.766)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="RightLegLower" type="Polygon2D" parent="CharacterRig/Torso/RightLegUpper"]
+position = Vector2(-87.4242, -3.72217)
+rotation = 0.215308
+scale = Vector2(0.967933, 1.05043)
+skew = -0.181719
+offset = Vector2(-238.594, -204.766)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+uv = PackedVector2Array(154.321, 170.988, 248.148, 173.457, 272.222, 198.148, 266.667, 223.457, 240.123, 236.42, 137.654, 235.185, 120.37, 210.494, 125.309, 180.864)
+
+[node name="RightBoot" type="Polygon2D" parent="CharacterRig/Torso/RightLegUpper/RightLegLower"]
+position = Vector2(-117.302, -4.54041)
+rotation = 1.9089
+scale = Vector2(0.813103, 1.01502)
+skew = -0.32826
+offset = Vector2(-477, -702)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(423.913, 750, 440.217, 697.826, 431.522, 606.522, 495.652, 629.348, 526.087, 614.13, 515.217, 695.652, 579.348, 729.348, 568.478, 752.174)
+uv = PackedVector2Array(423.913, 750, 440.217, 697.826, 431.522, 606.522, 495.652, 629.348, 526.087, 614.13, 515.217, 695.652, 579.348, 729.348, 568.478, 752.174)
+
+[node name="Head" type="Polygon2D" parent="CharacterRig/Torso"]
+position = Vector2(1, -216)
+rotation = -0.0052861
+offset = Vector2(-414.495, -192.366)
+texture = ExtResource("1_l7aig")
+polygon = PackedVector2Array(423, 273, 365, 178, 351, 151, 303, 117, 343, 95, 370, 108, 395, 62, 423, 76, 454, 66, 471, 124, 517, 107)
+uv = PackedVector2Array(423, 273, 365, 178, 351, 151, 303, 117, 343, 95, 370, 108, 395, 62, 423, 76, 454, 66, 471, 124, 517, 107)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterRig"]
