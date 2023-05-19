@@ -13,7 +13,6 @@ config_version=5
 config/name="West Sector"
 run/main_scene="res://Rig.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [rendering]
 

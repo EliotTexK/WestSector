@@ -1,108 +1,104 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg2226txxdjp6"]
+[gd_scene load_steps=7 format=3 uid="uid://bg2226txxdjp6"]
 
-[ext_resource type="Texture2D" uid="uid://lykg37nt25wq" path="res://Textures/Torso.png" id="1_2r3yw"]
-[ext_resource type="Texture2D" uid="uid://dwl4y18752fc0" path="res://Textures/Leg1.png" id="2_dw1da"]
-[ext_resource type="Texture2D" uid="uid://dk1g0iokwc3e3" path="res://Textures/Leg2.png" id="3_egkwh"]
-[ext_resource type="Texture2D" uid="uid://dfn1t61x1lbkd" path="res://Textures/Foot.png" id="4_bf4td"]
-[ext_resource type="Texture2D" uid="uid://c1q204wh1efoc" path="res://Textures/Head.png" id="5_cy0q6"]
-[ext_resource type="Texture2D" uid="uid://ckp6tb6upqf4t" path="res://Textures/Arm1.png" id="6_0icn7"]
-[ext_resource type="Texture2D" uid="uid://benh7mg2jh3cy" path="res://Textures/Arm2.png" id="7_q5bss"]
-[ext_resource type="Texture2D" uid="uid://b47wwnt4r7n1q" path="res://Textures/Hand1.png" id="8_tv5fa"]
+[ext_resource type="Texture2D" uid="uid://c2mbwnwopy3lq" path="res://Textures/Torso.png" id="1_2r3yw"]
+[ext_resource type="Texture2D" uid="uid://camicyc046nxg" path="res://Textures/Leg1.png" id="2_dw1da"]
+[ext_resource type="Texture2D" uid="uid://cy0d5aki81caq" path="res://Textures/Leg2.png" id="3_egkwh"]
+[ext_resource type="Texture2D" uid="uid://bdp8832naoxdk" path="res://Textures/Foot.png" id="4_bf4td"]
+[ext_resource type="Texture2D" uid="uid://bf42savsf5c60" path="res://Textures/Head.png" id="5_cy0q6"]
+[ext_resource type="Texture2D" uid="uid://dkg0udl5gh1da" path="res://Textures/Hand1.png" id="8_tv5fa"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterRig" type="Node" parent="."]
+[node name="CharacterRig" type="Node2D" parent="."]
+position = Vector2(207, 516)
+scale = Vector2(0.0800009, 0.0800009)
 
 [node name="Torso" type="Sprite2D" parent="CharacterRig"]
-position = Vector2(534, 236)
-scale = Vector2(0.459, 0.459)
 texture = ExtResource("1_2r3yw")
 
-[node name="Leg1_L" type="Sprite2D" parent="CharacterRig/Torso"]
-z_index = -1
-position = Vector2(-87.1459, 189.542)
-rotation = 1.5708
-scale = Vector2(1.743, -1.743)
-texture = ExtResource("2_dw1da")
-offset = Vector2(64.249, -1.11157)
-
-[node name="Leg2_L" type="Sprite2D" parent="CharacterRig/Torso/Leg1_L"]
-position = Vector2(124.249, 0.138428)
-rotation = 3.14159
-scale = Vector2(1, 1)
-texture = ExtResource("3_egkwh")
-offset = Vector2(-63.9097, 0.614136)
-
-[node name="Foot_L" type="Sprite2D" parent="CharacterRig/Torso/Leg1_L/Leg2_L"]
-position = Vector2(-142.66, -1.88593)
-rotation = 1.5708
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("4_bf4td")
-offset = Vector2(-17.2183, 21.7643)
-
-[node name="Leg1_R" type="Sprite2D" parent="CharacterRig/Torso"]
-z_index = -1
-position = Vector2(100.459, 186.494)
-rotation = 1.5708
-scale = Vector2(1.74292, -1.74292)
-texture = ExtResource("2_dw1da")
-offset = Vector2(64.249, -1.11157)
-
-[node name="Leg2_R" type="Sprite2D" parent="CharacterRig/Torso/Leg1_R"]
-position = Vector2(124.249, 0.138428)
-rotation = 3.14159
-scale = Vector2(1, 1)
-texture = ExtResource("3_egkwh")
-offset = Vector2(-63.9097, 0.614136)
-
-[node name="Foot_R" type="Sprite2D" parent="CharacterRig/Torso/Leg1_R/Leg2_R"]
-position = Vector2(-142.66, -1.88593)
-rotation = 1.5708
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("4_bf4td")
-offset = Vector2(-17.2183, 21.7643)
-
 [node name="Head" type="Sprite2D" parent="CharacterRig/Torso"]
-position = Vector2(19.6079, -311.547)
-scale = Vector2(2.17865, 2.17865)
+position = Vector2(-16, -300)
+scale = Vector2(2.8, 2.8)
 texture = ExtResource("5_cy0q6")
 
-[node name="Arm1_L" type="Sprite2D" parent="CharacterRig/Torso"]
-position = Vector2(-148.148, -137.255)
-scale = Vector2(1.52505, 1.52505)
-texture = ExtResource("6_0icn7")
-offset = Vector2(-74.2858, 1.42857)
+[node name="UpperLeftArm" type="Sprite2D" parent="CharacterRig/Torso"]
+position = Vector2(-141, -129)
+rotation = -0.782541
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_dw1da")
+offset = Vector2(-60.625, 1.875)
 
-[node name="Arm2_L" type="Sprite2D" parent="CharacterRig/Torso/Arm1_L"]
-position = Vector2(-141.429, 3.05176e-05)
+[node name="LowerLeftArm" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm"]
+position = Vector2(-110.625, 0.625)
+rotation = 1.02608
 scale = Vector2(1, 1)
-texture = ExtResource("7_q5bss")
-offset = Vector2(-72.8571, 1.42859)
+texture = ExtResource("3_egkwh")
+offset = Vector2(-60.625, 1.875)
 
-[node name="Hand_L" type="Sprite2D" parent="CharacterRig/Torso/Arm1_L/Arm2_L"]
-position = Vector2(-143.808, 1.6953)
-rotation = 3.14159
-scale = Vector2(1.42857, -1.42857)
+[node name="LeftHand" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm/LowerLeftArm"]
+position = Vector2(-144.197, 9.41211)
+rotation = -3.40436
+scale = Vector2(1.34854, -1.34777)
 texture = ExtResource("8_tv5fa")
-offset = Vector2(57.3345, -3.18672)
+offset = Vector2(94.8562, -65.035)
 
-[node name="Arm1_R" type="Sprite2D" parent="CharacterRig/Torso"]
+[node name="UpperRightArm" type="Sprite2D" parent="CharacterRig/Torso"]
+position = Vector2(145, -113)
+rotation = 0.791057
+scale = Vector2(-1.6, 1.6)
+texture = ExtResource("2_dw1da")
+offset = Vector2(-60.625, 1.875)
+
+[node name="LowerRightArm" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm"]
+position = Vector2(-110.625, 0.625)
+rotation = 1.02608
+scale = Vector2(1, 1)
+texture = ExtResource("3_egkwh")
+offset = Vector2(-60.625, 1.875)
+
+[node name="RightHand" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm/LowerRightArm"]
+position = Vector2(-144.197, 9.41211)
+rotation = -3.40436
+scale = Vector2(1.34854, -1.34777)
+texture = ExtResource("8_tv5fa")
+offset = Vector2(94.8562, -65.035)
+
+[node name="UpperLeftLeg" type="Sprite2D" parent="CharacterRig/Torso"]
 z_index = -1
-position = Vector2(154.684, -137.255)
-rotation = -3.14159
-scale = Vector2(1.52505, -1.52505)
-texture = ExtResource("6_0icn7")
-offset = Vector2(-74.2858, 1.42857)
+position = Vector2(-115, 177)
+rotation = -1.58256
+scale = Vector2(1.69615, 1.69615)
+texture = ExtResource("2_dw1da")
+offset = Vector2(-61.674, 0.742739)
 
-[node name="Arm2_R" type="Sprite2D" parent="CharacterRig/Torso/Arm1_R"]
-position = Vector2(-141.429, 3.05176e-05)
-scale = Vector2(1, 1)
-texture = ExtResource("7_q5bss")
-offset = Vector2(-72.8571, 1.42859)
+[node name="LowerLeftLeg" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg"]
+position = Vector2(-114.859, -1.00606)
+texture = ExtResource("3_egkwh")
+offset = Vector2(-61.651, 1.60989)
 
-[node name="Hand_R" type="Sprite2D" parent="CharacterRig/Torso/Arm1_R/Arm2_R"]
-position = Vector2(-143.808, 1.6953)
-rotation = 3.14159
-scale = Vector2(1.42857, -1.42857)
-texture = ExtResource("8_tv5fa")
-offset = Vector2(57.3345, -3.18672)
+[node name="LeftFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg"]
+position = Vector2(-137.006, 3.35178)
+rotation = 1.58465
+scale = Vector2(1.20588, 1.20588)
+texture = ExtResource("4_bf4td")
+offset = Vector2(-24.6974, 18.4941)
+
+[node name="UpperRightLeg" type="Sprite2D" parent="CharacterRig/Torso"]
+z_index = -1
+position = Vector2(120, 177)
+rotation = -4.6977
+scale = Vector2(-1.696, 1.696)
+texture = ExtResource("2_dw1da")
+offset = Vector2(-61.674, 0.742739)
+
+[node name="LowerRightLeg" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg"]
+position = Vector2(-114.859, -1.00606)
+texture = ExtResource("3_egkwh")
+offset = Vector2(-61.651, 1.60989)
+
+[node name="RightFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg"]
+position = Vector2(-137.006, 3.35178)
+rotation = 1.58465
+scale = Vector2(1.20588, 1.20588)
+texture = ExtResource("4_bf4td")
+offset = Vector2(-24.6974, 18.4941)
