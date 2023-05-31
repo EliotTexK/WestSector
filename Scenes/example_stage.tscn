@@ -1,16 +1,47 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg2226txxdjp6"]
+[gd_scene load_steps=21 format=3 uid="uid://df3txfitch56k"]
 
-[ext_resource type="Texture2D" uid="uid://c2mbwnwopy3lq" path="res://Textures/Torso.png" id="1_2r3yw"]
-[ext_resource type="Script" path="res://CharacterRig.gd" id="1_dt3ek"]
-[ext_resource type="Script" path="res://PlatformCharacter.gd" id="1_ytfmo"]
-[ext_resource type="Texture2D" uid="uid://camicyc046nxg" path="res://Textures/Leg1.png" id="2_dw1da"]
-[ext_resource type="Texture2D" uid="uid://cy0d5aki81caq" path="res://Textures/Leg2.png" id="3_egkwh"]
-[ext_resource type="Texture2D" uid="uid://bdp8832naoxdk" path="res://Textures/Foot.png" id="4_bf4td"]
-[ext_resource type="Texture2D" uid="uid://bf42savsf5c60" path="res://Textures/Head.png" id="5_cy0q6"]
-[ext_resource type="Texture2D" uid="uid://dkg0udl5gh1da" path="res://Textures/Hand1.png" id="8_tv5fa"]
+[ext_resource type="Script" path="res://Scripts/PlatformCharacter.gd" id="1_1lhw1"]
+[ext_resource type="Script" path="res://Scripts/Aim.gd" id="2_aeg28"]
+[ext_resource type="Texture2D" uid="uid://c2mbwnwopy3lq" path="res://Textures/Torso.png" id="3_djexv"]
+[ext_resource type="Texture2D" uid="uid://bf42savsf5c60" path="res://Textures/Head.png" id="4_b18hj"]
+[ext_resource type="Texture2D" uid="uid://camicyc046nxg" path="res://Textures/Leg1.png" id="5_wrfsg"]
+[ext_resource type="Texture2D" uid="uid://cy0d5aki81caq" path="res://Textures/Leg2.png" id="6_36ypx"]
+[ext_resource type="Texture2D" uid="uid://bdp8832naoxdk" path="res://Textures/Foot.png" id="7_0v5uq"]
+[ext_resource type="Texture2D" uid="uid://dkg0udl5gh1da" path="res://Textures/Hand1.png" id="8_2hr2s"]
+[ext_resource type="Texture2D" uid="uid://byi6liamka5m2" path="res://Textures/Hand4.png" id="9_w0cna"]
+[ext_resource type="Script" path="res://Scripts/Gun.gd" id="10_uirom"]
+[ext_resource type="Script" path="res://Scenes/Shield.gd" id="11_icj2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngy2e"]
-size = Vector2(166.646, 233)
+size = Vector2(166.646, 225.495)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q12ib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2hr2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w0cna")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rskq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2hr2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w0cna")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_1nckb"]
 length = 0.001
@@ -707,133 +738,168 @@ _data = {
 "leg_walk": SubResource("Animation_gwrdv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gvgh"]
+radius = 49.0102
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Cowboy1" type="CharacterBody2D" parent="."]
+[node name="Cowboy" type="CharacterBody2D" parent="."]
 position = Vector2(249, 315)
 scale = Vector2(0.336042, 0.336042)
+collision_layer = 0
 floor_max_angle = 0.959931
 floor_snap_length = 7.8
-script = ExtResource("1_ytfmo")
+script = ExtResource("1_1lhw1")
+move_speed = 500.0
+jump_speed = 900.0
+gravity_multiplier = 3.0
+bullet_vel_multiplier = 700.0
 
-[node name="CollisionBox" type="CollisionShape2D" parent="Cowboy1"]
-position = Vector2(0.000183105, -117.167)
+[node name="CollisionBox" type="CollisionShape2D" parent="Cowboy"]
+position = Vector2(0.000183105, -113.415)
 shape = SubResource("RectangleShape2D_ngy2e")
 
-[node name="CharacterRig" type="Node2D" parent="Cowboy1"]
-position = Vector2(0, -115)
+[node name="CharacterRig" type="Node2D" parent="Cowboy"]
+position = Vector2(0, -116.057)
 scale = Vector2(0.187223, 0.187223)
-script = ExtResource("1_dt3ek")
+script = ExtResource("2_aeg28")
 hand_radius = 50.0
 
-[node name="Torso" type="Sprite2D" parent="Cowboy1/CharacterRig"]
+[node name="Torso" type="Sprite2D" parent="Cowboy/CharacterRig"]
 rotation = -0.170964
-texture = ExtResource("1_2r3yw")
+texture = ExtResource("3_djexv")
 
-[node name="Head" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="Head" type="Sprite2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(2.57492e-05, -162.499)
 scale = Vector2(2.8, 2.8)
-texture = ExtResource("5_cy0q6")
+texture = ExtResource("4_b18hj")
 offset = Vector2(-5.71429, -49.1077)
 
-[node name="UpperLeftArm" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="UpperLeftArm" type="Sprite2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(-149.998, -124.999)
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("2_dw1da")
+texture = ExtResource("5_wrfsg")
 offset = Vector2(-60.625, 1.875)
 
-[node name="LowerLeftArm" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso/UpperLeftArm"]
+[node name="LowerLeftArm" type="Sprite2D" parent="Cowboy/CharacterRig/Torso/UpperLeftArm"]
 position = Vector2(-110.625, 0.625)
-texture = ExtResource("3_egkwh")
+texture = ExtResource("6_36ypx")
 offset = Vector2(-60.625, 1.875)
 
-[node name="UpperRightArm" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="UpperRightArm" type="Sprite2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(145, -113)
 scale = Vector2(-1.6, 1.6)
-texture = ExtResource("2_dw1da")
+texture = ExtResource("5_wrfsg")
 offset = Vector2(-60.625, 1.875)
 
-[node name="LowerRightArm" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso/UpperRightArm"]
+[node name="LowerRightArm" type="Sprite2D" parent="Cowboy/CharacterRig/Torso/UpperRightArm"]
 position = Vector2(-110.625, 0.625)
-texture = ExtResource("3_egkwh")
+texture = ExtResource("6_36ypx")
 offset = Vector2(-60.625, 1.875)
 
-[node name="UpperLeftLeg" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="UpperLeftLeg" type="Sprite2D" parent="Cowboy/CharacterRig/Torso"]
 z_index = -1
 position = Vector2(-115, 177)
 rotation = -1.58256
 scale = Vector2(1.69615, 1.69615)
-texture = ExtResource("2_dw1da")
+texture = ExtResource("5_wrfsg")
 offset = Vector2(-61.674, 0.742739)
 
-[node name="LowerLeftLeg" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso/UpperLeftLeg"]
+[node name="LowerLeftLeg" type="Sprite2D" parent="Cowboy/CharacterRig/Torso/UpperLeftLeg"]
 position = Vector2(-114.859, -1.00606)
-texture = ExtResource("3_egkwh")
+texture = ExtResource("6_36ypx")
 offset = Vector2(-61.651, 1.60989)
 
-[node name="LeftFoot" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg"]
+[node name="LeftFoot" type="Sprite2D" parent="Cowboy/CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg"]
 position = Vector2(-137.006, 3.35178)
 rotation = 1.58465
 scale = Vector2(1.20588, 1.20588)
-texture = ExtResource("4_bf4td")
+texture = ExtResource("7_0v5uq")
 offset = Vector2(-24.6974, 18.4941)
 
-[node name="UpperRightLeg" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="UpperRightLeg" type="Sprite2D" parent="Cowboy/CharacterRig/Torso"]
 z_index = -1
 position = Vector2(120, 177)
 rotation = -4.6977
 scale = Vector2(-1.696, 1.696)
-texture = ExtResource("2_dw1da")
+texture = ExtResource("5_wrfsg")
 offset = Vector2(-61.674, 0.742739)
 
-[node name="LowerRightLeg" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso/UpperRightLeg"]
+[node name="LowerRightLeg" type="Sprite2D" parent="Cowboy/CharacterRig/Torso/UpperRightLeg"]
 position = Vector2(-114.859, -1.00606)
-texture = ExtResource("3_egkwh")
+texture = ExtResource("6_36ypx")
 offset = Vector2(-61.651, 1.60989)
 
-[node name="RightFoot" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso/UpperRightLeg/LowerRightLeg"]
+[node name="RightFoot" type="Sprite2D" parent="Cowboy/CharacterRig/Torso/UpperRightLeg/LowerRightLeg"]
 position = Vector2(-137.006, 3.35178)
 rotation = 1.58465
 scale = Vector2(1.20588, 1.20588)
-texture = ExtResource("4_bf4td")
+texture = ExtResource("7_0v5uq")
 offset = Vector2(-24.6974, 18.4941)
 
-[node name="RightGun" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="RightGun" type="AnimatedSprite2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(1012.49, -274.997)
 scale = Vector2(2.1584, 2.1568)
-texture = ExtResource("8_tv5fa")
-offset = Vector2(-118.16, 17.5207)
+sprite_frames = SubResource("SpriteFrames_q12ib")
+offset = Vector2(-117.524, 15.9167)
+script = ExtResource("10_uirom")
 
-[node name="RightWrist" type="Node2D" parent="Cowboy1/CharacterRig/Torso/RightGun"]
-position = Vector2(-220.068, 75.3423)
+[node name="RightWrist" type="Node2D" parent="Cowboy/CharacterRig/Torso/RightGun"]
+position = Vector2(-221.4, 77.9006)
+scale = Vector2(2.1584, 2.1568)
 
-[node name="LeftGun" type="Sprite2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="TipColorTimer" type="Timer" parent="Cowboy/CharacterRig/Torso/RightGun"]
+wait_time = 0.1
+one_shot = true
+
+[node name="LeftGun" type="AnimatedSprite2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(-1015.27, -284.515)
 rotation = 3.14159
 scale = Vector2(2.1584, -2.1568)
-texture = ExtResource("8_tv5fa")
-offset = Vector2(-117.133, 16.3705)
+sprite_frames = SubResource("SpriteFrames_4rskq")
+offset = Vector2(-117.793, 17.6606)
+script = ExtResource("10_uirom")
 
-[node name="LeftWrist" type="Node2D" parent="Cowboy1/CharacterRig/Torso/LeftGun"]
-position = Vector2(-221.357, 73.9597)
+[node name="LeftWrist" type="Node2D" parent="Cowboy/CharacterRig/Torso/LeftGun"]
+position = Vector2(-221.357, 73.959)
 
-[node name="DefaultRightGunPos" type="Node2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="TipColorTimer" type="Timer" parent="Cowboy/CharacterRig/Torso/LeftGun"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DefaultRightGunPos" type="Node2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(900, -164.59)
 
-[node name="DefaultLeftGunPos" type="Node2D" parent="Cowboy1/CharacterRig/Torso"]
+[node name="DefaultLeftGunPos" type="Node2D" parent="Cowboy/CharacterRig/Torso"]
 position = Vector2(-905.988, -164.591)
-scale = Vector2(1, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cowboy1/CharacterRig"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cowboy/CharacterRig"]
 root_node = NodePath("../Torso")
 libraries = {
 "": SubResource("AnimationLibrary_r4ka5")
 }
 
+[node name="Shield" type="Area2D" parent="Cowboy/CharacterRig"]
+z_index = -2
+position = Vector2(0, -0.00146484)
+scale = Vector2(15.8945, 15.8945)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("11_icj2f")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="Cowboy/CharacterRig/Shield"]
+shape = SubResource("CircleShape2D_3gvgh")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(78, 526, 52, 463, 73, 416, 102, 386, 148, 370, 303, 376, 357, 390, 389, 411, 415, 440, 426, 474, 457, 492, 680, 490, 793, 469, 905, 427, 963, 401, 1098, 398, 1103, 240, 1149, 218, 1146, 507, 1081, 594, 636, 664, 413, 594, 164, 620)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+z_index = -2
 polygon = PackedVector2Array(78, 526, 52, 463, 73, 416, 102, 386, 148, 370, 303, 376, 357, 390, 389, 411, 415, 440, 426, 474, 457, 492, 680, 490, 793, 469, 905, 427, 963, 401, 1098, 398, 1103, 240, 1149, 218, 1146, 507, 1081, 594, 636, 664, 413, 594, 164, 620)
+
+[connection signal="timeout" from="Cowboy/CharacterRig/Torso/RightGun/TipColorTimer" to="Cowboy/CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
+[connection signal="timeout" from="Cowboy/CharacterRig/Torso/LeftGun/TipColorTimer" to="Cowboy/CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
+[connection signal="timeout" from="Cowboy/CharacterRig/Torso/LeftGun/TipColorTimer" to="Cowboy/CharacterRig/Torso/LeftGun" method="_on_tip_color_timer_timeout"]

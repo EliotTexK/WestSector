@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4houbtcrb1wg"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_7pbfu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfcyd"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_7pbfu")
+grav_multiplier = 0.8
+time_multiplier = 2.0
+color = Color(1, 1, 1, 1)
+
+[node name="DestroyOnExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CircleCollider" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CircleShape2D_gfcyd")
+
+[connection signal="screen_exited" from="DestroyOnExitScreen" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]

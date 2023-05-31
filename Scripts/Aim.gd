@@ -14,6 +14,7 @@ var defaultRightGunPos : Node2D
 var upperArmLength : float
 var lowerArmLength : float
 var total_arm_length : float
+var active_gun : Node2D
 
 func _ready():
 	torso = get_node("Torso")
@@ -53,6 +54,8 @@ func _process(delta):
 		if vec.length() > 0.1: rightGun.position += vec * 5 * delta
 		if rightGun.rotation_degrees > 0.1 or rightGun.rotation_degrees < -0.1:
 			rightGun.rotation -= rightGun.rotation * 5 * delta
+		# set position of active gun
+		active_gun = leftGun
 	else:
 		# move/rotate right hand to at the cursor
 		# if the cursor is close enough to the character,
@@ -75,6 +78,8 @@ func _process(delta):
 			leftGun.rotation_degrees -= (leftGun.rotation_degrees - 180) * 5 * delta
 		if leftGun.rotation_degrees < 179.9:
 			leftGun.rotation_degrees += (180 - leftGun.rotation_degrees) * 5 * delta
+		# set position of active gun
+		active_gun = rightGun
 	# use analytic 2 bone IK to update arm positions
 	var t1 = upperRightArm.global_position.angle_to_point(rightWrist.global_position)
 	var t2 = (total_arm_length - (rightWrist.global_position - upperRightArm.global_position).length()) / total_arm_length
