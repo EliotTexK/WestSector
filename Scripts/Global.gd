@@ -24,7 +24,7 @@ func _on_host_button_pressed() -> void:
 func _on_join_button_pressed() -> void:
 	main_menu.hide()
 	
-	enet_peer.create_client("localhost", PORT)
+	enet_peer.create_client($CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
 # called when a peer (client) is connected

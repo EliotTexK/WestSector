@@ -17,13 +17,11 @@ var can_hit_my_shield = false
 @export var time_multiplier : float # how fast the bullet moves, including gravity
 @export var color : Color
 
-var sepx
-
 func _ready() -> void:
 	time = 0
 	origin = position
 	gravity *= grav_multiplier
-
+   
 func _physics_process(delta) -> void:
 	# apply kinematics equations
 	position = Vector2(origin.x + initial_vel.x * time,
