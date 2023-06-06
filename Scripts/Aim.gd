@@ -1,40 +1,40 @@
 extends Node2D
-var torso : Node2D
-var leftGun : Node2D
-var rightGun : Node2D
-var leftWrist : Node2D # read-only
-var rightWrist : Node2D # read-only
+
+@export var desired_cursor : Vector2 # sync this with some latency
+var cursor : Vector2 # follow desired_cursor so it doesn't look laggy
+
 @export var hand_radius : float
-var upperLeftArm : Node2D # center of aim radius for left hand
-var lowerLeftArm : Node2D
-var upperRightArm : Node2D # center of aim radius for left hand
-var lowerRightArm : Node2D
-var defaultLeftGunPos : Node2D
-var defaultRightGunPos : Node2D
-var upperArmLength : float
+@onready var torso : Node2D = $Torso
+@onready var leftGun : Node2D = $Torso/LeftGun
+@onready var rightGun : Node2D = $Torso/RightGun
+@onready var leftWrist : Node2D = $Torso/LeftGun/LeftWrist # read-only
+@onready var rightWrist : Node2D = $Torso/RightGun/RightWrist # read-only
+@onready var upperLeftArm : Node2D = $Torso/UpperLeftArm # center of aim radius for left hand
+@onready var lowerLeftArm : Node2D = $Torso/UpperLeftArm/LowerLeftArm
+@onready var upperRightArm : Node2D = $Torso/UpperRightArm # center of aim radius for left hand
+@onready var lowerRightArm : Node2D = $Torso/UpperRightArm/LowerRightArm
+@onready var defaultLeftGunPos : Node2D = $Torso/DefaultLeftGunPos # return to this position when not aiming left gun
+@onready var defaultRightGunPos : Node2D = $Torso/DefaultRightGunPos # return to this position when not aiming right gun
+var upperArmLength : float 
 var lowerArmLength : float
 var total_arm_length : float
 var active_gun : Node2D
 
-func _ready():
-	torso = get_node("Torso")
-	leftGun = get_node("Torso/LeftGun")
-	leftWrist = get_node("Torso/LeftGun/LeftWrist")
-	upperLeftArm = get_node("Torso/UpperLeftArm")
-	lowerLeftArm = get_node("Torso/UpperLeftArm/LowerLeftArm")
-	rightGun = get_node("Torso/RightGun")
-	rightWrist = get_node("Torso/RightGun/RightWrist")
-	upperRightArm = get_node("Torso/UpperRightArm")
-	lowerRightArm = get_node("Torso/UpperRightArm/LowerRightArm")
-	defaultLeftGunPos = get_node("Torso/DefaultLeftGunPos")
-	defaultRightGunPos = get_node("Torso/DefaultRightGunPos")
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(get_parent().name).to_int())
+
+func _ready() -> void:
 	upperArmLength = (lowerLeftArm.global_position - upperLeftArm.global_position).length()
 	lowerArmLength = (leftWrist.global_position - lowerLeftArm.global_position).length()
 	total_arm_length = upperArmLength + lowerArmLength
 		
-func _process(delta):
+func _process(delta) -> void:
+	if is_multiplayer_authority():
+		desired_cursor = get_viewport().get_mouse_position()
+		cursor = desired_cursor
+	else:
+		cursor += (desired_cursor - cursor) * 20 * delta
 	# if the cursor is left of the character, aim the left gun, etc.
-	var cursor = get_viewport().get_mouse_position()
 	if abs(torso.global_position.angle_to_point(cursor)) > PI/2:
 		# move/rotate left hand to at the cursor
 		# if the cursor is close enough to the character,
@@ -60,7 +60,6 @@ func _process(delta):
 		# move/rotate right hand to at the cursor
 		# if the cursor is close enough to the character,
 		# take that into account
-		cursor = get_viewport().get_mouse_position()
 		var dist = (upperRightArm.global_position - cursor).length()
 		if dist > hand_radius/8:
 			if dist <= hand_radius:
@@ -80,7 +79,7 @@ func _process(delta):
 			leftGun.rotation_degrees += (180 - leftGun.rotation_degrees) * 5 * delta
 		# set position of active gun
 		active_gun = rightGun
-	# use analytic 2 bone IK to update arm positions
+	# use 2 bone IK to update arm positions
 	var t1 = upperRightArm.global_position.angle_to_point(rightWrist.global_position)
 	var t2 = (total_arm_length - (rightWrist.global_position - upperRightArm.global_position).length()) / total_arm_length
 	t2 = t2*2

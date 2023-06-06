@@ -1,15 +1,13 @@
 extends AnimatedSprite2D
 
-var TipColorTimer : Timer
-
-func _ready():
-	TipColorTimer = get_node("TipColorTimer")
+@onready var TipColorTimer : Timer = $TipColorTimer
 
 # change to different animation frame after firing
 # then set a short timer to change back
-func change_tip_color():
+@rpc("call_local")
+func change_tip_color() -> void:
 	frame = 1
 	TipColorTimer.start()
 
-func _on_tip_color_timer_timeout():
+func _on_tip_color_timer_timeout() -> void:
 	frame = 0
