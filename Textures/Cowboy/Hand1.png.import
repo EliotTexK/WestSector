@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://camicyc046nxg"
-path="res://.godot/imported/Leg1.png-09577ba633c7c3e142111a7d516c8347.ctex"
+uid="uid://dkg0udl5gh1da"
+path="res://.godot/imported/Hand1.png-072b442a934f6c71db5fd6b48d6069b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Leg1.png"
-dest_files=["res://.godot/imported/Leg1.png-09577ba633c7c3e142111a7d516c8347.ctex"]
+source_file="res://Textures/Cowboy/Hand1.png"
+dest_files=["res://.godot/imported/Hand1.png-072b442a934f6c71db5fd6b48d6069b7.ctex"]
 
 [params]
 

@@ -1,47 +1,74 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvo6mshyrn2p6"]
+[gd_scene load_steps=41 format=3 uid="uid://u13r5gmvddc1"]
 
 [ext_resource type="Script" path="res://Scripts/PlatformCharacter.gd" id="1_d83ug"]
 [ext_resource type="Script" path="res://Scripts/Aim.gd" id="2_qtbru"]
-[ext_resource type="Texture2D" uid="uid://c2mbwnwopy3lq" path="res://Textures/Torso.png" id="3_hi0nj"]
-[ext_resource type="Texture2D" uid="uid://bf42savsf5c60" path="res://Textures/Head.png" id="4_t45jq"]
-[ext_resource type="Texture2D" uid="uid://camicyc046nxg" path="res://Textures/Leg1.png" id="5_jhjgf"]
-[ext_resource type="Texture2D" uid="uid://cy0d5aki81caq" path="res://Textures/Leg2.png" id="6_kajnt"]
-[ext_resource type="Texture2D" uid="uid://bdp8832naoxdk" path="res://Textures/Foot.png" id="7_kqm5c"]
-[ext_resource type="Texture2D" uid="uid://dkg0udl5gh1da" path="res://Textures/Hand1.png" id="8_2mbey"]
-[ext_resource type="Texture2D" uid="uid://byi6liamka5m2" path="res://Textures/Hand4.png" id="9_qcnlr"]
+[ext_resource type="Shader" path="res://hue_shift.gdshader" id="3_py4hl"]
+[ext_resource type="Texture2D" uid="uid://c2mbwnwopy3lq" path="res://Textures/Cowboy/Torso.png" id="4_fvdqe"]
+[ext_resource type="Texture2D" uid="uid://bf42savsf5c60" path="res://Textures/Cowboy/Head.png" id="5_x5pwc"]
+[ext_resource type="Texture2D" uid="uid://camicyc046nxg" path="res://Textures/Cowboy/Leg1.png" id="6_vdaqy"]
+[ext_resource type="Texture2D" uid="uid://cy0d5aki81caq" path="res://Textures/Cowboy/Leg2.png" id="7_hxmlj"]
+[ext_resource type="Texture2D" uid="uid://bdp8832naoxdk" path="res://Textures/Cowboy/Foot.png" id="8_k4wie"]
+[ext_resource type="Texture2D" uid="uid://dkg0udl5gh1da" path="res://Textures/Cowboy/Hand1.png" id="9_71ycj"]
+[ext_resource type="Shader" path="res://grayscale.gdshader" id="9_o6ule"]
+[ext_resource type="Texture2D" uid="uid://byi6liamka5m2" path="res://Textures/Cowboy/Hand4.png" id="10_6evfr"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="10_gb4as"]
 [ext_resource type="Script" path="res://Scripts/Shield.gd" id="11_10twt"]
+[ext_resource type="Script" path="res://Scripts/SpawnRigidbodies.gd" id="12_hj2kx"]
+[ext_resource type="Texture2D" uid="uid://bc5o1yt1abhi4" path="res://Textures/Skeleton/RibCage.png" id="13_esngb"]
+[ext_resource type="Texture2D" uid="uid://k1dtf3wmsbbh" path="res://Textures/Skeleton/Pelvis.png" id="14_lv8qb"]
+[ext_resource type="Texture2D" uid="uid://cnpaxawdn2w6q" path="res://Textures/Skeleton/Skull1.png" id="15_wrpbu"]
+[ext_resource type="Texture2D" uid="uid://b5ao3jfjixo6i" path="res://Textures/Skeleton/Skull2.png" id="16_dteya"]
+[ext_resource type="Texture2D" uid="uid://bmqxrjttssd3h" path="res://Textures/Skeleton/FemurHumerus.png" id="17_aerld"]
+[ext_resource type="Texture2D" uid="uid://dxf8uv5jckgd1" path="res://Textures/Skeleton/TwoBone.png" id="18_qqeiu"]
+[ext_resource type="Texture2D" uid="uid://bbc50ta2p104u" path="res://Textures/Skeleton/HandFoot.png" id="19_1p1h1"]
+[ext_resource type="Texture2D" uid="uid://chpsx4n0tcgbv" path="res://Textures/Skeleton/SmallBone1.png" id="20_nermo"]
+[ext_resource type="Texture2D" uid="uid://buwh5eyv2pk65" path="res://Textures/Skeleton/Gun2.png" id="21_7v78d"]
+[ext_resource type="Texture2D" uid="uid://bal0ujvd1vjnk" path="res://Textures/Skeleton/Hat.png" id="22_m7e1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48q0s"]
 size = Vector2(166.646, 225.495)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1e0x"]
+resource_local_to_scene = true
+shader = ExtResource("3_py4hl")
+shader_parameter/Shift_Hue = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qtcf"]
+shader = ExtResource("9_o6ule")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ajhjn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_2mbey")
+"texture": ExtResource("9_71ycj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_qcnlr")
+"texture": ExtResource("10_6evfr")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgcv5"]
+shader = ExtResource("9_o6ule")
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0os6x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_2mbey")
+"texture": ExtResource("9_71ycj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_qcnlr")
+"texture": ExtResource("10_6evfr")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ttc0"]
+shader = ExtResource("9_o6ule")
 
 [sub_resource type="Animation" id="Animation_1nckb"]
 length = 0.001
@@ -777,78 +804,534 @@ script = ExtResource("2_qtbru")
 hand_radius = 50.0
 
 [node name="Torso" type="Sprite2D" parent="CharacterRig"]
+material = SubResource("ShaderMaterial_n1e0x")
 rotation = -0.170964
-texture = ExtResource("3_hi0nj")
+texture = ExtResource("4_fvdqe")
 
 [node name="Head" type="Sprite2D" parent="CharacterRig/Torso"]
+use_parent_material = true
 position = Vector2(2.57492e-05, -162.499)
 scale = Vector2(2.8, 2.8)
-texture = ExtResource("4_t45jq")
+texture = ExtResource("5_x5pwc")
 offset = Vector2(-5.71429, -49.1077)
 
+[node name="RigidBodySpawner" type="Node2D" parent="CharacterRig/Torso/Head"]
+position = Vector2(3.79114, -21.9583)
+scale = Vector2(0.584442, 0.584442)
+script = ExtResource("12_hj2kx")
+
+[node name="Skull" type="RigidBody2D" parent="CharacterRig/Torso/Head/RigidBodySpawner"]
+visible = false
+position = Vector2(-0.384644, -53.2776)
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/Head/RigidBodySpawner/Skull"]
+polygon = PackedVector2Array(-90.118, 37.6526, -77.6388, 9.40063, -99.5186, -39.9863, -61.0713, -86.5593, 37.4376, -84.7551, 76.6292, -47.5823, 66.4338, 11.47, 84.7552, 37.438, 60.0618, 48.3779, 57.248, 108.705, -32.605, 100.793, -47.1031, 52.6807)
+
+[node name="Skull1" type="Sprite2D" parent="CharacterRig/Torso/Head/RigidBodySpawner/Skull"]
+position = Vector2(4.57764e-05, 0.000244141)
+rotation = -0.00659014
+texture = ExtResource("15_wrpbu")
+offset = Vector2(-11.7825, 7.10034)
+
+[node name="RigidBodySpawner2" type="Node2D" parent="CharacterRig/Torso/Head"]
+position = Vector2(0.401611, -11.0222)
+rotation = -0.126306
+scale = Vector2(0.491166, 0.491166)
+script = ExtResource("12_hj2kx")
+
+[node name="Jaw" type="RigidBody2D" parent="CharacterRig/Torso/Head/RigidBodySpawner2"]
+visible = false
+position = Vector2(0, 0.000488281)
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="Skull2" type="Sprite2D" parent="CharacterRig/Torso/Head/RigidBodySpawner2/Jaw"]
+rotation = -0.129891
+texture = ExtResource("16_dteya")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/Head/RigidBodySpawner2/Jaw"]
+polygon = PackedVector2Array(53.656, 101.05, -67.8994, 63.812, -69.6887, -9.26147, 62.9172, 31.3621)
+
+[node name="RigidBodySpawner3" type="Node2D" parent="CharacterRig/Torso/Head"]
+position = Vector2(-1.89331, -97.8273)
+rotation = -0.303303
+scale = Vector2(1.04611, 1.04611)
+script = ExtResource("12_hj2kx")
+
+[node name="Hat" type="RigidBody2D" parent="CharacterRig/Torso/Head/RigidBodySpawner3"]
+visible = false
+position = Vector2(0, 0.000488281)
+collision_layer = 8
+collision_mask = 9
+gravity_scale = 0.5
+freeze = true
+linear_damp = 2.0
+
+[node name="Hat" type="Sprite2D" parent="CharacterRig/Torso/Head/RigidBodySpawner3/Hat"]
+material = SubResource("ShaderMaterial_0qtcf")
+position = Vector2(-0.000488281, 0)
+rotation = 0.29727
+texture = ExtResource("22_m7e1r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/Head/RigidBodySpawner3/Hat"]
+polygon = PackedVector2Array(-70.3206, -5.60132, -96.6786, -37.4309, -65.1066, -39.5225, -43.4474, -22.3041, -4.18329, -63.1445, 22.3035, -43.448, 56.2247, -38.2339, 50.753, 19.9536, 87.1524, 20.3402, 40.5826, 63.5298, 43.3185, 34.436, -38.7488, -7.69287)
+
 [node name="UpperLeftArm" type="Sprite2D" parent="CharacterRig/Torso"]
+use_parent_material = true
 position = Vector2(-149.998, -124.999)
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("5_jhjgf")
+texture = ExtResource("6_vdaqy")
 offset = Vector2(-60.625, 1.875)
 
 [node name="LowerLeftArm" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm"]
+use_parent_material = true
 position = Vector2(-110.625, 0.625)
-texture = ExtResource("6_kajnt")
+texture = ExtResource("7_hxmlj")
 offset = Vector2(-60.625, 1.875)
+
+[node name="RigidBodySpawner" type="Node2D" parent="CharacterRig/Torso/UpperLeftArm/LowerLeftArm"]
+position = Vector2(-4.2301, 1.15991)
+rotation = -0.0276168
+scale = Vector2(0.336357, 0.336357)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftArm/LowerLeftArm/RigidBodySpawner"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm/LowerLeftArm/RigidBodySpawner/RadiusUlna"]
+position = Vector2(0.000488281, -0.00195312)
+rotation = 1.59328
+texture = ExtResource("18_qqeiu")
+offset = Vector2(-12.2543, 165.888)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftArm/LowerLeftArm/RigidBodySpawner/RadiusUlna"]
+polygon = PackedVector2Array(42.9751, -50.1455, -372.49, -93.0781, -372.477, 28.6953, 42.9888, 71.6279)
+
+[node name="RigidBodySpawner" type="Node2D" parent="CharacterRig/Torso/UpperLeftArm"]
+position = Vector2(5.99707, 2.48804)
+rotation = -0.0276169
+scale = Vector2(0.311918, 0.311918)
+script = ExtResource("12_hj2kx")
+
+[node name="Humerus" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftArm/RigidBodySpawner"]
+visible = false
+position = Vector2(-0.00012207, -0.000244141)
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm/RigidBodySpawner/Humerus"]
+position = Vector2(-0.000183105, -0.000671387)
+rotation = -1.54799
+texture = ExtResource("17_aerld")
+offset = Vector2(10.4154, -142.839)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftArm/RigidBodySpawner/Humerus"]
+polygon = PackedVector2Array(14.4893, -72.002, 21.5117, 79.248, -316.988, 86.0479, -316.766, -101.202)
 
 [node name="UpperRightArm" type="Sprite2D" parent="CharacterRig/Torso"]
+use_parent_material = true
 position = Vector2(145, -113)
 scale = Vector2(-1.6, 1.6)
-texture = ExtResource("5_jhjgf")
+texture = ExtResource("6_vdaqy")
 offset = Vector2(-60.625, 1.875)
 
+[node name="RigidBodySpawner" type="Node2D" parent="CharacterRig/Torso/UpperRightArm"]
+z_index = 1
+position = Vector2(-2.90015, -3.95728)
+rotation = -0.0243334
+scale = Vector2(0.311918, -0.311918)
+script = ExtResource("12_hj2kx")
+
+[node name="Humerus" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightArm/RigidBodySpawner"]
+visible = false
+position = Vector2(-0.00012207, -0.000244141)
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm/RigidBodySpawner/Humerus"]
+position = Vector2(-0.000183105, -0.000671387)
+rotation = -1.54799
+texture = ExtResource("17_aerld")
+offset = Vector2(10.4154, -142.839)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightArm/RigidBodySpawner/Humerus"]
+polygon = PackedVector2Array(14.4893, -72.002, 21.5117, 79.248, -316.988, 86.0479, -316.766, -101.202)
+
 [node name="LowerRightArm" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm"]
+use_parent_material = true
 position = Vector2(-110.625, 0.625)
-texture = ExtResource("6_kajnt")
+texture = ExtResource("7_hxmlj")
 offset = Vector2(-60.625, 1.875)
+
+[node name="RigidBodySpawner" type="Node2D" parent="CharacterRig/Torso/UpperRightArm/LowerRightArm"]
+position = Vector2(-11.1501, -2.3291)
+rotation = -6.25244
+scale = Vector2(0.336357, -0.336357)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightArm/LowerRightArm/RigidBodySpawner"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm/LowerRightArm/RigidBodySpawner/RadiusUlna"]
+position = Vector2(0.000488281, -0.00195312)
+rotation = 1.59328
+texture = ExtResource("18_qqeiu")
+offset = Vector2(-12.2543, 165.888)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightArm/LowerRightArm/RigidBodySpawner/RadiusUlna"]
+polygon = PackedVector2Array(42.9751, -50.1455, -372.49, -93.0781, -372.477, 28.6953, 42.9888, 71.6279)
 
 [node name="UpperLeftLeg" type="Sprite2D" parent="CharacterRig/Torso"]
 z_index = -1
+use_parent_material = true
 position = Vector2(-115, 177)
 rotation = -1.58256
 scale = Vector2(1.69615, 1.69615)
-texture = ExtResource("5_jhjgf")
+texture = ExtResource("6_vdaqy")
 offset = Vector2(-61.674, 0.742739)
 
 [node name="LowerLeftLeg" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg"]
+use_parent_material = true
 position = Vector2(-114.859, -1.00606)
-texture = ExtResource("6_kajnt")
+texture = ExtResource("7_hxmlj")
 offset = Vector2(-61.651, 1.60989)
 
 [node name="LeftFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg"]
+use_parent_material = true
 position = Vector2(-137.006, 3.35178)
 rotation = 1.58465
 scale = Vector2(1.20588, 1.20588)
-texture = ExtResource("7_kqm5c")
+texture = ExtResource("8_k4wie")
 offset = Vector2(-24.6974, 18.4941)
+
+[node name="RigidBodySpawner2" type="Node2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot"]
+position = Vector2(-11.3113, 24.9629)
+rotation = 0.880025
+scale = Vector2(0.871598, 0.871598)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner2"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="HandFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner2/RadiusUlna"]
+position = Vector2(-0.000488281, 0.0012207)
+rotation = 0.259215
+texture = ExtResource("19_1p1h1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner2/RadiusUlna"]
+polygon = PackedVector2Array(-2.46875, -32.0502, -33.5681, 14.9871, 20.4863, 40.5858, 28.0669, -22.0012)
+
+[node name="RigidBodySpawner3" type="Node2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot"]
+position = Vector2(-49.6135, 18.4324)
+rotation = 0.880025
+scale = Vector2(0.285729, 0.285729)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner3"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner3/RadiusUlna"]
+position = Vector2(0, 0.00112915)
+rotation = -2.57959
+texture = ExtResource("20_nermo")
+offset = Vector2(1.20312, -37.8103)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner3/RadiusUlna"]
+polygon = PackedVector2Array(-7.96948, -39.0676, -71.6846, 67.5248, -30.1479, 91.6074, 44.5686, -0.951416)
+
+[node name="RigidBodySpawner4" type="Node2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot"]
+position = Vector2(-44.5654, 35.0596)
+rotation = 0.699279
+scale = Vector2(0.30418, 0.30418)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner4"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner4/RadiusUlna"]
+position = Vector2(0, 0.00112915)
+rotation = -2.57959
+texture = ExtResource("20_nermo")
+offset = Vector2(1.20312, -37.8103)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner4/RadiusUlna"]
+polygon = PackedVector2Array(-7.96948, -39.0676, -71.6846, 67.5248, -30.1479, 91.6074, 44.5686, -0.951416)
+
+[node name="RigidBodySpawner5" type="Node2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot"]
+position = Vector2(-39.5171, 51.6865)
+rotation = 0.539287
+scale = Vector2(0.2857, 0.2857)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner5"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner5/RadiusUlna"]
+position = Vector2(0, 0.00112915)
+rotation = -2.57959
+texture = ExtResource("20_nermo")
+offset = Vector2(1.20312, -37.8103)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner5/RadiusUlna"]
+polygon = PackedVector2Array(-7.96948, -39.0676, -71.6846, 67.5248, -30.1479, 91.6074, 44.5686, -0.951416)
+
+[node name="RigidBodySpawner2" type="Node2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg"]
+position = Vector2(-25.2866, -3.59131)
+rotation = -0.0440532
+scale = Vector2(0.31729, 0.31729)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/RigidBodySpawner2"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/RigidBodySpawner2/RadiusUlna"]
+position = Vector2(0.000488281, -0.00195312)
+rotation = 1.59328
+texture = ExtResource("18_qqeiu")
+offset = Vector2(-12.2543, 165.888)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/RigidBodySpawner2/RadiusUlna"]
+polygon = PackedVector2Array(42.9751, -50.1455, -372.49, -93.0781, -372.477, 28.6953, 42.9888, 71.6279)
+
+[node name="RigidBodySpawner2" type="Node2D" parent="CharacterRig/Torso/UpperLeftLeg"]
+z_index = 1
+position = Vector2(-26.1611, -2.59375)
+rotation = -0.0437095
+scale = Vector2(0.294236, 0.294236)
+script = ExtResource("12_hj2kx")
+
+[node name="Humerus" type="RigidBody2D" parent="CharacterRig/Torso/UpperLeftLeg/RigidBodySpawner2"]
+visible = false
+position = Vector2(-0.00012207, -0.000244141)
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/RigidBodySpawner2/Humerus"]
+position = Vector2(-0.000183105, -0.000671387)
+rotation = -1.54799
+texture = ExtResource("17_aerld")
+offset = Vector2(10.4154, -142.839)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperLeftLeg/RigidBodySpawner2/Humerus"]
+polygon = PackedVector2Array(14.4893, -72.002, 21.5117, 79.248, -316.988, 86.0479, -316.766, -101.202)
 
 [node name="UpperRightLeg" type="Sprite2D" parent="CharacterRig/Torso"]
 z_index = -1
+use_parent_material = true
 position = Vector2(120, 177)
 rotation = -4.6977
 scale = Vector2(-1.696, 1.696)
-texture = ExtResource("5_jhjgf")
+texture = ExtResource("6_vdaqy")
 offset = Vector2(-61.674, 0.742739)
 
 [node name="LowerRightLeg" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg"]
+use_parent_material = true
 position = Vector2(-114.859, -1.00606)
-texture = ExtResource("6_kajnt")
+texture = ExtResource("7_hxmlj")
 offset = Vector2(-61.651, 1.60989)
 
 [node name="RightFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg"]
+use_parent_material = true
 position = Vector2(-137.006, 3.35178)
 rotation = 1.58465
 scale = Vector2(1.20588, 1.20588)
-texture = ExtResource("7_kqm5c")
+texture = ExtResource("8_k4wie")
 offset = Vector2(-24.6974, 18.4941)
 
+[node name="RigidBodySpawner6" type="Node2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot"]
+position = Vector2(-13.2173, 26.5513)
+rotation = 4.5532
+scale = Vector2(0.871675, -0.871675)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner6"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="HandFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner6/RadiusUlna"]
+position = Vector2(-0.000488281, 0.0012207)
+rotation = 0.259215
+texture = ExtResource("19_1p1h1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner6/RadiusUlna"]
+polygon = PackedVector2Array(-2.46875, -32.0502, -33.5681, 14.9871, 20.4863, 40.5858, 28.0669, -22.0012)
+
+[node name="RigidBodySpawner7" type="Node2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot"]
+position = Vector2(-58.1797, 23.7012)
+rotation = 4.64339
+scale = Vector2(0.285755, -0.285755)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner7"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner7/RadiusUlna"]
+position = Vector2(0, 0.00112915)
+rotation = -2.57959
+texture = ExtResource("20_nermo")
+offset = Vector2(1.20312, -37.8103)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner7/RadiusUlna"]
+polygon = PackedVector2Array(-7.96948, -39.0676, -71.6846, 67.5248, -30.1479, 91.6074, 44.5686, -0.951416)
+
+[node name="RigidBodySpawner8" type="Node2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot"]
+position = Vector2(-46.085, 37.4424)
+rotation = 4.68204
+scale = Vector2(0.304207, -0.304207)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner8"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner8/RadiusUlna"]
+position = Vector2(0, 0.00112915)
+rotation = -2.57959
+texture = ExtResource("20_nermo")
+offset = Vector2(1.20312, -37.8103)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner8/RadiusUlna"]
+polygon = PackedVector2Array(-7.96948, -39.0676, -71.6846, 67.5248, -30.1479, 91.6074, 44.5686, -0.951416)
+
+[node name="RigidBodySpawner9" type="Node2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot"]
+position = Vector2(-34.793, 54.5273)
+rotation = 4.68615
+scale = Vector2(0.285725, -0.285725)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner9"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner9/RadiusUlna"]
+position = Vector2(0, 0.00112915)
+rotation = -2.57959
+texture = ExtResource("20_nermo")
+offset = Vector2(1.20312, -37.8103)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner9/RadiusUlna"]
+polygon = PackedVector2Array(-7.96948, -39.0676, -71.6846, 67.5248, -30.1479, 91.6074, 44.5686, -0.951416)
+
+[node name="RigidBodySpawner3" type="Node2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg"]
+position = Vector2(-24.8154, 4.01099)
+rotation = 0.0705058
+scale = Vector2(0.317318, -0.317318)
+script = ExtResource("12_hj2kx")
+
+[node name="RadiusUlna" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RigidBodySpawner3"]
+visible = false
+z_index = 1
+position = Vector2(0.000366211, -0.0012207)
+rotation = -0.0462877
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RigidBodySpawner3/RadiusUlna"]
+position = Vector2(0.000488281, -0.00195312)
+rotation = 1.59328
+texture = ExtResource("18_qqeiu")
+offset = Vector2(-12.2543, 165.888)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RigidBodySpawner3/RadiusUlna"]
+polygon = PackedVector2Array(42.9751, -50.1455, -372.49, -93.0781, -372.477, 28.6953, 42.9888, 71.6279)
+
+[node name="RigidBodySpawner3" type="Node2D" parent="CharacterRig/Torso/UpperRightLeg"]
+z_index = 1
+position = Vector2(-20.0947, 2.42822)
+rotation = 0.0701621
+scale = Vector2(0.294262, -0.294262)
+script = ExtResource("12_hj2kx")
+
+[node name="Humerus" type="RigidBody2D" parent="CharacterRig/Torso/UpperRightLeg/RigidBodySpawner3"]
+visible = false
+position = Vector2(-39.9738, 10.0046)
+rotation = 0.0377862
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/RigidBodySpawner3/Humerus"]
+position = Vector2(-0.000183105, -0.000671387)
+rotation = -1.54799
+texture = ExtResource("17_aerld")
+offset = Vector2(10.4154, -142.839)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/UpperRightLeg/RigidBodySpawner3/Humerus"]
+polygon = PackedVector2Array(14.4893, -72.002, 21.5117, 79.248, -316.988, 86.0479, -316.766, -101.202)
+
 [node name="RightGun" type="AnimatedSprite2D" parent="CharacterRig/Torso"]
+use_parent_material = true
 position = Vector2(1012.49, -274.997)
 scale = Vector2(2.1584, 2.1568)
 sprite_frames = SubResource("SpriteFrames_ajhjn")
@@ -863,7 +1346,34 @@ scale = Vector2(2.1584, 2.1568)
 wait_time = 0.1
 one_shot = true
 
+[node name="RigidBodySpawner3" type="Node2D" parent="CharacterRig/Torso/RightGun"]
+z_index = 1
+position = Vector2(-119.268, 15.1494)
+rotation = 0.0617496
+scale = Vector2(1.042, 1)
+script = ExtResource("12_hj2kx")
+
+[node name="Humerus" type="RigidBody2D" parent="CharacterRig/Torso/RightGun/RigidBodySpawner3"]
+visible = false
+position = Vector2(0.936157, 0.101562)
+rotation = 0.0377862
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="Gun2" type="Sprite2D" parent="CharacterRig/Torso/RightGun/RigidBodySpawner3/Humerus"]
+material = SubResource("ShaderMaterial_sgcv5")
+position = Vector2(-1.84277, -1.31494)
+rotation = 0.0290956
+skew = 0.000248671
+texture = ExtResource("21_7v78d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/RightGun/RigidBodySpawner3/Humerus"]
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(-98.9092, -72.1162, -73.7902, -47.2341, -62.6565, -20.2793, -96.5844, -8.1001, -107.464, 14.9658, -90.3728, 33.8865, -67.3243, 44.7732, -70.176, 73.8007, -38.3186, 47.6259, -35.2129, 68.6193, -9.31287, 50.4785, 31.6075, 37.2631, 61.6487, 47.1135, 102.569, 33.8981, 114.484, 17.8301, 104.385, -2.12695, 59.3239, -16.9028, 31.3534, -12.7576, -27.6934, -25.4607, -31.8344, -53.4517, -54.1018, -107.361)
+
 [node name="LeftGun" type="AnimatedSprite2D" parent="CharacterRig/Torso"]
+use_parent_material = true
 position = Vector2(-1015.27, -284.515)
 rotation = 3.14159
 scale = Vector2(2.1584, -2.1568)
@@ -878,11 +1388,74 @@ position = Vector2(-221.357, 73.959)
 wait_time = 0.1
 one_shot = true
 
+[node name="RigidBodySpawner4" type="Node2D" parent="CharacterRig/Torso/LeftGun"]
+z_index = 1
+position = Vector2(-119.918, 17.7434)
+rotation = 6.20731
+scale = Vector2(1.042, 1.042)
+script = ExtResource("12_hj2kx")
+
+[node name="Humerus" type="RigidBody2D" parent="CharacterRig/Torso/LeftGun/RigidBodySpawner4"]
+visible = false
+position = Vector2(0.936157, 0.101562)
+rotation = 0.0377862
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="Gun2" type="Sprite2D" parent="CharacterRig/Torso/LeftGun/RigidBodySpawner4/Humerus"]
+material = SubResource("ShaderMaterial_7ttc0")
+position = Vector2(-1.84277, -1.31494)
+rotation = 0.0290956
+skew = 0.000248671
+texture = ExtResource("21_7v78d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/LeftGun/RigidBodySpawner4/Humerus"]
+polygon = PackedVector2Array(-62.3953, 102.127, -34.8593, 41.3611, -30.6625, 19.3936, 32.382, 10.9592, 62.2739, 21.2305, 103.367, 8.59741, 121.574, -15.2444, 104.756, -34.4001, 59.9181, -49.8073, 32.8345, -39.0486, -4.0625, -48.3829, -28.8217, -73.6117, -33.0184, -51.6443, -65.7186, -82.9459, -61.0382, -47.8956, -89.058, -44.147, -114.27, -19.3679, -82.5054, 4.92358, -67.5594, 10.0593, -70.8199, 39.0366, -110.041, 65.6899)
+
 [node name="DefaultRightGunPos" type="Node2D" parent="CharacterRig/Torso"]
 position = Vector2(900, -164.59)
 
 [node name="DefaultLeftGunPos" type="Node2D" parent="CharacterRig/Torso"]
 position = Vector2(-905.988, -164.591)
+
+[node name="RigidBodySpawner" type="Node2D" parent="CharacterRig/Torso"]
+position = Vector2(-7.55029, -49.6919)
+scale = Vector2(0.757815, 0.757815)
+script = ExtResource("12_hj2kx")
+
+[node name="RibCage" type="RigidBody2D" parent="CharacterRig/Torso/RigidBodySpawner"]
+visible = false
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/RigidBodySpawner/RibCage"]
+polygon = PackedVector2Array(-153.361, -139.385, 168.007, -132.29, 166.32, 157.753, 11.8342, 211.729, -142.089, 169.025)
+
+[node name="RibCage" type="Sprite2D" parent="CharacterRig/Torso/RigidBodySpawner/RibCage"]
+position = Vector2(-0.000244141, 0.000976562)
+rotation = 0.0165282
+texture = ExtResource("13_esngb")
+
+[node name="RigidBodySpawner2" type="Node2D" parent="CharacterRig/Torso"]
+position = Vector2(-5.9707, 128.007)
+rotation = -0.150166
+scale = Vector2(0.690258, 0.690258)
+script = ExtResource("12_hj2kx")
+
+[node name="Pelvis" type="RigidBody2D" parent="CharacterRig/Torso/RigidBodySpawner2"]
+visible = false
+collision_layer = 8
+collision_mask = 9
+freeze = true
+
+[node name="Pelvis" type="Sprite2D" parent="CharacterRig/Torso/RigidBodySpawner2/Pelvis"]
+rotation = 0.170964
+texture = ExtResource("14_lv8qb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/RigidBodySpawner2/Pelvis"]
+polygon = PackedVector2Array(-126.836, -128.32, -220.215, -80.5889, -220.957, 46.9897, -49.2153, 161.778, 33.458, 176.052, 188.842, 139.026, 234.489, -2.08447, 162.521, -78.3628, 72.71, -51.2998, -30.6309, -69.1416)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterRig"]
 root_node = NodePath("../Torso")
@@ -912,6 +1485,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="CharacterRig/SelfDamageInvincibleArea"]
+position = Vector2(-2.00006, -3.00018)
 shape = SubResource("CircleShape2D_x35gg")
 debug_color = Color(0.862745, 0, 0.866667, 0.0901961)
 
@@ -922,8 +1496,32 @@ replication_config = SubResource("SceneReplicationConfig_qoqap")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6whap")
 
+[connection signal="before_death" from="." to="CharacterRig/Torso/Head/RigidBodySpawner" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/Head/RigidBodySpawner2" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/Head/RigidBodySpawner3" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftArm/LowerLeftArm/RigidBodySpawner" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftArm/RigidBodySpawner" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightArm/RigidBodySpawner" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightArm/LowerRightArm/RigidBodySpawner" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner2" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner3" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner4" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner5" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/RigidBodySpawner2" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/RigidBodySpawner2" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner6" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner7" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner8" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner9" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RigidBodySpawner3" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/RigidBodySpawner3" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/RightGun/RigidBodySpawner3" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/LeftGun/RigidBodySpawner4" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/RigidBodySpawner" method="spawn"]
+[connection signal="before_death" from="." to="CharacterRig/Torso/RigidBodySpawner2" method="spawn"]
 [connection signal="timeout" from="CharacterRig/Torso/RightGun/TipColorTimer" to="CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
 [connection signal="timeout" from="CharacterRig/Torso/LeftGun/TipColorTimer" to="CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
 [connection signal="timeout" from="CharacterRig/Torso/LeftGun/TipColorTimer" to="CharacterRig/Torso/LeftGun" method="_on_tip_color_timer_timeout"]
 [connection signal="area_entered" from="CharacterRig/Shield" to="CharacterRig/Shield" method="_on_area_entered"]
+[connection signal="hit_player" from="CharacterRig/Shield" to="." method="death"]
 [connection signal="timeout" from="CharacterRig/Shield/HitEffectTimer" to="CharacterRig/Shield" method="_on_hit_effect_timer_timeout"]

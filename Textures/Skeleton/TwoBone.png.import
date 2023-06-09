@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy0d5aki81caq"
-path="res://.godot/imported/Leg2.png-b6456194287f55ae2c8e459a75bc3441.ctex"
+uid="uid://dxf8uv5jckgd1"
+path="res://.godot/imported/TwoBone.png-b39577fbdb1ca1751ce62acde0bd8a85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Leg2.png"
-dest_files=["res://.godot/imported/Leg2.png-b6456194287f55ae2c8e459a75bc3441.ctex"]
+source_file="res://Textures/Skeleton/TwoBone.png"
+dest_files=["res://.godot/imported/TwoBone.png-b39577fbdb1ca1751ce62acde0bd8a85.ctex"]
 
 [params]
 

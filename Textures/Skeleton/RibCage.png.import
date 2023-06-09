@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdp8832naoxdk"
-path="res://.godot/imported/Foot.png-5555ac7521a9acb4274752b3e68d76b4.ctex"
+uid="uid://bc5o1yt1abhi4"
+path="res://.godot/imported/RibCage.png-02fc30965db5e9722d08d8a09ec936e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Foot.png"
-dest_files=["res://.godot/imported/Foot.png-5555ac7521a9acb4274752b3e68d76b4.ctex"]
+source_file="res://Textures/Skeleton/RibCage.png"
+dest_files=["res://.godot/imported/RibCage.png-02fc30965db5e9722d08d8a09ec936e5.ctex"]
 
 [params]
 

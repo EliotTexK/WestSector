@@ -15,6 +15,7 @@ var cursor : Vector2 # follow desired_cursor so it doesn't look laggy
 @onready var lowerRightArm : Node2D = $Torso/UpperRightArm/LowerRightArm
 @onready var defaultLeftGunPos : Node2D = $Torso/DefaultLeftGunPos # return to this position when not aiming left gun
 @onready var defaultRightGunPos : Node2D = $Torso/DefaultRightGunPos # return to this position when not aiming right gun
+@onready var shield : Node2D = $Shield
 var upperArmLength : float 
 var lowerArmLength : float
 var total_arm_length : float
@@ -34,8 +35,10 @@ func _process(delta) -> void:
 		cursor = desired_cursor
 	else:
 		cursor += (desired_cursor - cursor) * 20 * delta
+	var center_to_cursor = torso.global_position.angle_to_point(cursor)
+	shield.shield_angle = center_to_cursor
 	# if the cursor is left of the character, aim the left gun, etc.
-	if abs(torso.global_position.angle_to_point(cursor)) > PI/2:
+	if abs(center_to_cursor) > PI/2:
 		# move/rotate left hand to at the cursor
 		# if the cursor is close enough to the character,
 		# take that into account

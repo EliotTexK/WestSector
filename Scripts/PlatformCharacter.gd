@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+signal before_death
+
+# Player 1 vs Player 2 etc.
+@export var player_number : int = -1
+
 @export var move_speed : float
 @export var jump_speed : float
 @export var gravity_multiplier : float
@@ -26,6 +31,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	animation_state = "idle"
 	sync_set_pos_offset.rpc(-115)
+	callback_set_player_number.rpc()
 
 func _process(delta: float):
 	# change animation based on state
@@ -68,12 +74,24 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -jump_speed
 		sync_set_pos_offset.rpc(-115)
 		sync_set_desired_rot.rpc(0)
+		print_player_number.rpc()
 	
 	move_and_slide()
 	
 	# fire bullets
 	if Input.is_action_just_pressed("fire"):
 		fire_bullet.rpc(get_viewport().get_mouse_position())
+		
+	if Input.is_action_just_pressed("death"):
+		death()
+
+func death() -> void:
+	sync_death.rpc()
+
+@rpc("call_local")
+func sync_death() -> void:
+	emit_signal("before_death")
+	queue_free()
 
 @rpc("call_local")
 func fire_bullet(cursor: Vector2) -> void:
@@ -88,8 +106,9 @@ func fire_bullet(cursor: Vector2) -> void:
 	bullet.position = ag.global_position
 	bullet.initial_vel = (cursor-ag.global_position).normalized()*bullet_vel_multiplier
 	
-	get_tree().root.get_child(0).add_child(bullet,true)
+	bullet.set_multiplayer_authority(str(name).to_int())
 	
+	get_tree().root.get_child(0).add_child(bullet,true)
 
 # check to see if animation state has changed before calling rpc
 func change_animation_state(animation: String) -> void:
@@ -116,6 +135,25 @@ func stick_to_floor() -> void:
 func adjust_air_rotation(delta: float) -> void:
 	if character_rig.global_rotation_degrees > 0.1 or character_rig.global_rotation_degrees < -0.1:
 		character_rig.global_rotation -= character_rig.global_rotation*0.2
+
+# used for debug purposes
+@rpc("call_local","any_peer")
+func print_player_number() -> void:
+	print(name, " : ", player_number,
+		" authority" if is_multiplayer_authority() else "",
+		" server" if multiplayer.is_server() else "")
+
+# server will call back to clients with the correct player number
+@rpc("call_local","any_peer")
+func callback_set_player_number() -> void:
+	if multiplayer.is_server():
+		set_player_number.rpc(player_number)
+
+# set player number on all peers
+@rpc("call_local","any_peer")
+func set_player_number(num: int) -> void:
+	player_number = num
+	get_node("CharacterRig/Torso").material.set_shader_parameter("Shift_Hue", num*0.2)
 
 @rpc("call_local")
 func sync_animation(animation: String) -> void:
