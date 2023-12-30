@@ -774,12 +774,12 @@ radius = 71.0657
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qoqap"]
 properties/0/path = NodePath(".:desired_cursor")
 properties/0/spawn = true
-properties/0/sync = true
+properties/0/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6whap"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/sync = true
+properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(249, 315)

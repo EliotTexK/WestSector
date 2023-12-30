@@ -39,8 +39,10 @@ func _on_area_entered(area) -> void:
 		if not (bullet.my_shield == self and not bullet.can_hit_my_shield):
 			# figure out if the bullet is in the blockable area
 			var angle_half = PI * health_percent
-			var angle_bullet = global_position.angle_to(bullet.global_position)
-			if angle_bullet < shield_angle - angle_half or angle_bullet > shield_angle + angle_half:
+			var angle_bullet = global_position.angle_to_point(bullet.global_position)
+			var min_angle = shield_angle - angle_half
+			var max_angle = shield_angle + angle_half
+			if angle_bullet < min_angle or angle_bullet > max_angle:
 				call_deferred("defer_hit_player")
 			else:
 				hit_shield.rpc()

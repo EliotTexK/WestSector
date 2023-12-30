@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://chht6eoitjnu2"]
+
+[ext_resource type="Script" path="res://Scripts/Global.gd" id="1_w65y5"]
+
+[node name="Global" type="Node2D"]
+script = ExtResource("1_w65y5")
+
+[node name="HostJoinMenu" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="PanelContainer" parent="HostJoinMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 440.0
+offset_top = 223.0
+offset_right = -440.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HostJoinMenu/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HostJoinMenu/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HostButton" type="Button" parent="HostJoinMenu/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="HostJoinMenu/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="AddressEntry" type="LineEdit" parent="HostJoinMenu/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter Address to Join..."
+alignment = 1
+
+[node name="PointsCounter" type="CanvasLayer" parent="."]
+
+[node name="StageContainer" type="Node" parent="."]
+
+[node name="EndRoundTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="pressed" from="HostJoinMenu/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="HostJoinMenu/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="timeout" from="EndRoundTimer" to="." method="change_stage"]
