@@ -1,7 +1,5 @@
 extends Area2D
 
-signal kill_player
-
 var player_number
 
 var radius : float
@@ -10,7 +8,9 @@ var health_percent : float
 var shield_angle : float
 @onready var hit_effect_timer : Timer = $HitEffectTimer
 @onready var collision_circle : CircleShape2D = $CollisionCircle.shape
-
+# TODO: shield radius should be constant with respect to screen size
+# TODO: shield should have "inverted color" shader
+# TODO: shield should only shrink once the hit_effect timer has worn off, to better indicate where the shield sector was when it was hit
 var shield_regen_speed : float = 0.1
 
 func _ready() -> void:
@@ -46,22 +46,32 @@ func _draw() -> void:
 
 func _on_area_entered(area) -> void:
 	var bullet = area.get_parent()
+	if not bullet is Bullet:
+		print("HANDLE THIS COLLISION")
+		return
 	if bullet.player_number == self.player_number and not bullet.can_hit_my_shield:
 		return
-	else:
-		# figure out if the bullet is in the blockable area
-		var angle_half = PI * health_percent
-		var angle_bullet = global_position.angle_to_point(bullet.global_position)
-		var min_angle = shield_angle - angle_half
-		var max_angle = shield_angle + angle_half
-		if (angle_bullet < min_angle or angle_bullet > max_angle) and not health_percent == 1.0:
+	Global.remove_bullet(bullet)
+	if hit_effect_timer.is_stopped():
+		hit_shield_or_die(bullet)
+
+func hit_shield_or_die(bullet: Node2D) -> void:
+	# figure out if the bullet is in the blockable area
+	var angle_half = PI * health_percent
+	var angle_bullet = global_position.angle_to_point(bullet.global_position)
+	# TODO: come back here if/when we want more network synchronization
+	if player_number == Global.my_player_number:
+		if (abs(angle_bullet - shield_angle) > angle_half) and not health_percent >= 0.99:
+			print("%d: hit!" % Global.my_player_number)
 			call_deferred("deferred_kill_player")
 		else:
+			print("%d: miss!" % Global.my_player_number)
 			hit_shield()
-		Global.remove_bullet(bullet)
+	else:
+		hit_shield()
 
 func deferred_kill_player() -> void:
-	emit_signal("kill_player")
+	Global.kill_player(Global.root.my_player)
 
 func hit_shield() -> void:
 	shield_draw_thickness = 3

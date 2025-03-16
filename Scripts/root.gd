@@ -9,6 +9,7 @@ extends Node
 const player = preload("res://Scenes/player.tscn")
 const PORT : int = 6942
 
+# TODO: add some of this network functionaliity to global
 var enet_peer: ENetMultiplayerPeer
 var my_id : int
 var my_player : Node2D
@@ -75,13 +76,13 @@ func add_player(player_number: int, is_opponent: bool) -> Node2D:
 
 @rpc("call_local","reliable")
 func add_peer_player(peer_id: int, order: int) -> void:
-	
 	print("%d: setting peer order of peer %d to %d" % [my_id, peer_id, order])
 	var is_new = peer_id not in peer_number.keys()
 	if is_new:
 		peer_number[peer_id] = order
 		if peer_id == my_id:
 			my_player = add_player(order,false)
+			Global.my_player_number = order
 		else:
 			peer_players[peer_id] = add_player(order,true)
 
@@ -95,13 +96,18 @@ func on_recieved_peer(peer_id: int, packet: PackedByteArray) -> void:
 		var peer_player = peer_players[peer_id]
 		if peer_player:
 			var split_msg = packet.get_string_from_ascii().split(";")
+			# decode player data
 			var player_data = split_msg[0].split(",")
-			peer_player.global_position = Vector2(float(player_data[0]),float(player_data[1]))
-			peer_player.update_anim_from_state(int(player_data[2]))
-			peer_player.shield.health_percent = float(player_data[3])
-			peer_player.character_rig.position.y = float(player_data[4])
-			peer_player.character_rig.global_rotation = float(player_data[5])
-			peer_player.character_rig.cursor = Vector2(float(player_data[6]),float(player_data[7]))
+			if len(player_data) == 1 and player_data[0] == "d":
+				Global.kill_player(peer_player)
+			else:
+				peer_player.global_position = Vector2(float(player_data[0]),float(player_data[1]))
+				peer_player.update_anim_from_state(int(player_data[2]))
+				peer_player.shield.health_percent = float(player_data[3])
+				peer_player.character_rig.position.y = float(player_data[4])
+				peer_player.character_rig.global_rotation = float(player_data[5])
+				peer_player.character_rig.cursor = Vector2(float(player_data[6]),float(player_data[7]))
+			# decode bullet data
 			for bullet_msg in split_msg.slice(1):
 				var bullet_data = bullet_msg.split(",")
 				if len(bullet_data) < 3: continue
@@ -113,9 +119,9 @@ func on_recieved_peer(peer_id: int, packet: PackedByteArray) -> void:
 				)
 				
 func _process(_delta: float) -> void:
+	var msg = ""
 	if my_player:
-		var msg = ""
-		# player data
+		# encode player data
 		msg += "%.2f," % my_player.global_position.x
 		msg += "%.2f," % my_player.global_position.y
 		msg += "%d," % my_player.anim_state
@@ -125,7 +131,7 @@ func _process(_delta: float) -> void:
 		var mouse_pos = get_viewport().get_camera_2d().get_global_mouse_position()
 		msg += "%.2f," % mouse_pos.x
 		msg += "%.2f," % mouse_pos.y
-		# bullet data
+		# encode bullet data
 		if len(Global.my_bullets.keys()) > 0:
 			msg += ";"
 			for bid in Global.my_bullets.keys():
@@ -133,4 +139,5 @@ func _process(_delta: float) -> void:
 				var bul = Global.my_bullets[bid]
 				msg += "%.2f," % bul.global_position.x
 				msg += "%.2f;" % bul.global_position.y
-		multiplayer.send_bytes(msg.to_ascii_buffer())
+	elif Global.is_dead.has(Global.my_player_number): msg += "d"
+	multiplayer.send_bytes(msg.to_ascii_buffer())

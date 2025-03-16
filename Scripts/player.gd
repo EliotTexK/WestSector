@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 		fire_bullet(get_viewport().get_camera_2d().get_global_mouse_position())
 		
 	if Input.is_action_just_pressed("death"):
-		death()
+		Global.kill_player(self)
 	
 	# smoothly transition to desired rotation
 	character_rig.global_rotation += (desired_rot - character_rig.global_rotation) * delta * 20
@@ -88,9 +88,6 @@ func update_anim_from_state(new_anim_state: ANIM_STATE):
 		ANIM_STATE.IDLE: animation_player.play("leg_idle")
 		ANIM_STATE.WALK: animation_player.play("leg_walk",-1,1.5)
 		ANIM_STATE.JUMP: animation_player.play("leg_jump")
-
-func death() -> void:
-	queue_free()
 
 func fire_bullet(cursor: Vector2) -> void:
 	var ag = character_rig.active_gun

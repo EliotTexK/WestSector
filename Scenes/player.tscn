@@ -768,7 +768,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sugc6"]
-radius = 49.0
+radius = 47.8157
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x35gg"]
 radius = 71.0657
@@ -1478,7 +1478,7 @@ libraries = {
 
 [node name="Shield" type="Area2D" parent="CharacterRig"]
 z_index = -2
-position = Vector2(0, 111.262)
+position = Vector2(0, 81.057)
 scale = Vector2(15.8945, 15.8945)
 collision_layer = 2
 collision_mask = 4
@@ -1507,5 +1507,4 @@ debug_color = Color(0.862745, 0, 0.866667, 0.0901961)
 [connection signal="timeout" from="CharacterRig/Torso/LeftGun/TipColorTimer" to="CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
 [connection signal="timeout" from="CharacterRig/Torso/LeftGun/TipColorTimer" to="CharacterRig/Torso/LeftGun" method="_on_tip_color_timer_timeout"]
 [connection signal="area_entered" from="CharacterRig/Shield" to="CharacterRig/Shield" method="_on_area_entered"]
-[connection signal="kill_player" from="CharacterRig/Shield" to="." method="death"]
 [connection signal="timeout" from="CharacterRig/Shield/HitEffectTimer" to="CharacterRig/Shield" method="_on_hit_effect_timer_timeout"]
