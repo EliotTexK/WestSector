@@ -1,11 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://chht6eoitjnu2"]
 
-[ext_resource type="Script" uid="uid://ddg6empoj4ocm" path="res://Scripts/global.gd" id="1_1pdgp"]
-[ext_resource type="PackedScene" uid="uid://c3odeimp2o2rb" path="res://Scenes/stages/example_1.tscn" id="2_kib2a"]
+[ext_resource type="Script" uid="uid://ddg6empoj4ocm" path="res://Scripts/root.gd" id="1_1pdgp"]
+[ext_resource type="PackedScene" uid="uid://c3odeimp2o2rb" path="res://Scenes/stages/test_stage_1.tscn" id="2_kib2a"]
 [ext_resource type="Script" uid="uid://cgxsgoimq1xfp" path="res://Scripts/main_camera.gd" id="3_1pdgp"]
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("main_menu", "address_entry", "main_camera", "stage_container")]
 script = ExtResource("1_1pdgp")
+main_menu = NodePath("MenuLayer/MainMenu")
+address_entry = NodePath("MenuLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry")
+main_camera = NodePath("MainCamera")
+stage_container = NodePath("StageContainer")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 
@@ -46,15 +50,13 @@ alignment = 1
 
 [node name="BulletContainer" type="Node" parent="."]
 
-[node name="StageContainer" type="CanvasGroup" parent="."]
-z_index = -1
+[node name="StageContainer" type="Node" parent="."]
 
 [node name="Stage1" parent="StageContainer" instance=ExtResource("2_kib2a")]
 position = Vector2(-611, -672)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 script = ExtResource("3_1pdgp")
-vertical_padding_factor = 0.2
 
 [connection signal="pressed" from="MenuLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="MenuLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

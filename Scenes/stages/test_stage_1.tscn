@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3odeimp2o2rb"]
+
+[ext_resource type="Script" uid="uid://c5snndriydb5l" path="res://Scripts/stage.gd" id="1_1id54"]
+
+[node name="TestStage1" type="Node2D" node_paths=PackedStringArray("spawnpoint_container")]
+script = ExtResource("1_1id54")
+spawnpoint_container = NodePath("SpawnpointContainer")
+
+[node name="LevelGeometry" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelGeometry"]
+scale = Vector2(1.76, 1)
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelGeometry/StaticBody2D"]
+position = Vector2(28.7, -59.5)
+polygon = PackedVector2Array(-1, 2, -56, -45, -143, -73, -178, -108, -217, -129, -103, -133, 23, -130, 113, -116, 202, -125, 115, -70, 17, -41)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LevelGeometry/StaticBody2D"]
+position = Vector2(100.477, -28.1)
+scale = Vector2(1.25, 1)
+polygon = PackedVector2Array(-276, -126, -340, -137, -374, -149, -398, -169, -416, -193, -428, -223, -430, -253, -450, -126, -426, -84, -370, -60, -294, -82)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="LevelGeometry/StaticBody2D"]
+position = Vector2(60, -103.2)
+polygon = PackedVector2Array(266, -66, 314, -67, 345, -72, 373, -79, 392, -94, 410, -113, 423, -133, 435, -153, 455, -156, 473, -112, 476, -50, 443, -10, 341, -10, 270, -24)
+
+[node name="Polygon2D" type="Polygon2D" parent="LevelGeometry/StaticBody2D"]
+position = Vector2(28.7, -59.5)
+polygon = PackedVector2Array(-1, 2, -56, -45, -143, -73, -178, -108, -217, -129, -103, -133, 23, -130, 113, -116, 202, -125, 115, -70, 17, -41)
+
+[node name="Polygon2D2" type="Polygon2D" parent="LevelGeometry/StaticBody2D"]
+position = Vector2(100.477, -28.1)
+scale = Vector2(1.25, 1)
+polygon = PackedVector2Array(-276, -126, -340, -137, -374, -149, -398, -169, -416, -193, -428, -223, -430, -253, -450, -126, -426, -84, -370, -60, -294, -82)
+
+[node name="Polygon2D3" type="Polygon2D" parent="LevelGeometry/StaticBody2D"]
+position = Vector2(60, -103.2)
+polygon = PackedVector2Array(266, -66, 314, -67, 345, -72, 373, -79, 392, -94, 410, -113, 423, -133, 435, -153, 455, -156, 473, -112, 476, -50, 443, -10, 341, -10, 270, -24)
+
+[node name="SpawnpointContainer" type="Node" parent="."]
+
+[node name="Spawnpoint1" type="Node2D" parent="SpawnpointContainer"]
+position = Vector2(-225, -256)
+
+[node name="Spawnpoint2" type="Node2D" parent="SpawnpointContainer"]
+position = Vector2(24, -253)
+
+[node name="Spawnpoint3" type="Node2D" parent="SpawnpointContainer"]
+position = Vector2(-652, -248)
+
+[node name="Spawnpoint4" type="Node2D" parent="SpawnpointContainer"]
+position = Vector2(723, -247)
+
+[node name="Spawnpoint5" type="Node2D" parent="SpawnpointContainer"]
+position = Vector2(271, -242)

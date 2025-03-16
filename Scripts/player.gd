@@ -7,7 +7,6 @@ var player_number: int = -1
 @export var gravity_multiplier : float
 @export var bullet_vel_multiplier : float # speed at which bullets come out
 
-var bullet_instance = preload("res://Scenes/bullet.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -97,11 +96,12 @@ func fire_bullet(cursor: Vector2) -> void:
 	var ag = character_rig.active_gun
 	if ag.frame == 0:
 		ag.change_tip_color()
-		var bullet = bullet_instance.instantiate()
-		bullet.player_number = self.player_number
-		bullet.position = ag.global_position
-		bullet.initial_vel = (cursor-ag.global_position).normalized()*bullet_vel_multiplier + velocity*global_scale.x*2
-		Global.add_bullet(bullet)
+		var initial_vel = (cursor-ag.global_position).normalized()*bullet_vel_multiplier + velocity*global_scale.x*2
+		Global.add_new_bullet(
+			self.player_number,
+			ag.global_position,
+			initial_vel
+		)
 
 # updates desired adjustment of the character's position and rotation based
 # on the angle of the floor

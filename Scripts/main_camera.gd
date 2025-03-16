@@ -1,10 +1,10 @@
 extends Camera2D
 
 @export var targets: Array[Node2D] = []  # Nodes to track
-@export var padding_ratio: float = .2  # Space around targets, percent of screen
-@export var vertical_padding_factor: float = 0.5  # Reduce vertical padding sensitivity
-@export var min_zoom: float = 0.5  # Min zoom level
-@export var max_zoom: float = 2.0  # Max zoom level
+@export var padding_ratio: float = 0.2  # Space around targets, percent of screen
+@export var vertical_padding_factor: float = 0.2  # Reduce vertical padding sensitivity
+@export var min_zoom: float = 0.2  # Min zoom level
+@export var max_zoom: float = 1.0  # Max zoom level
 @export var zoom_smoothness: float = 5.0  # Higher = smoother zoom
 @export var move_smoothness: float = 5.0  # Higher = smoother movement
 

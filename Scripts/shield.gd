@@ -58,7 +58,7 @@ func _on_area_entered(area) -> void:
 			call_deferred("deferred_kill_player")
 		else:
 			hit_shield()
-		bullet.queue_free()
+		Global.remove_bullet(bullet)
 
 func deferred_kill_player() -> void:
 	emit_signal("kill_player")
