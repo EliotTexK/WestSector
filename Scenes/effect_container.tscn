@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dp2gr2bnjymnj"]
 
-[ext_resource type="Script" path="res://Scripts/FadeOutThenDelete.gd" id="1_2q31t"]
+[ext_resource type="Script" uid="uid://b1sf25k85324" path="res://Scripts/fade_then_delete.gd" id="1_2q31t"]
 
 [node name="effect_container" type="Node2D"]
 

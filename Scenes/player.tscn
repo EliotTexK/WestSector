@@ -1,19 +1,20 @@
 [gd_scene load_steps=41 format=3 uid="uid://u13r5gmvddc1"]
 
-[ext_resource type="Script" path="res://Scripts/PlatformCharacter.gd" id="1_d83ug"]
-[ext_resource type="Script" path="res://Scripts/Aim.gd" id="2_qtbru"]
-[ext_resource type="Shader" path="res://hue_shift.gdshader" id="3_py4hl"]
+[ext_resource type="Script" uid="uid://bgouul2osliq1" path="res://Scripts/player.gd" id="1_d83ug"]
+[ext_resource type="Script" uid="uid://gawwl8t6lfrq" path="res://Scripts/character_rig.gd" id="2_qtbru"]
+[ext_resource type="Shader" uid="uid://csufdhw7lgoss" path="res://hue_shift.gdshader" id="3_py4hl"]
 [ext_resource type="Texture2D" uid="uid://c2mbwnwopy3lq" path="res://Textures/Cowboy/Torso.png" id="4_fvdqe"]
 [ext_resource type="Texture2D" uid="uid://bf42savsf5c60" path="res://Textures/Cowboy/Head.png" id="5_x5pwc"]
 [ext_resource type="Texture2D" uid="uid://camicyc046nxg" path="res://Textures/Cowboy/Leg1.png" id="6_vdaqy"]
 [ext_resource type="Texture2D" uid="uid://cy0d5aki81caq" path="res://Textures/Cowboy/Leg2.png" id="7_hxmlj"]
+[ext_resource type="Script" uid="uid://b1sf25k85324" path="res://Scripts/fade_then_delete.gd" id="7_p1odr"]
 [ext_resource type="Texture2D" uid="uid://bdp8832naoxdk" path="res://Textures/Cowboy/Foot.png" id="8_k4wie"]
 [ext_resource type="Texture2D" uid="uid://dkg0udl5gh1da" path="res://Textures/Cowboy/Hand1.png" id="9_71ycj"]
-[ext_resource type="Shader" path="res://grayscale.gdshader" id="9_o6ule"]
+[ext_resource type="Shader" uid="uid://cicba8x7lfpri" path="res://grayscale.gdshader" id="9_o6ule"]
 [ext_resource type="Texture2D" uid="uid://byi6liamka5m2" path="res://Textures/Cowboy/Hand4.png" id="10_6evfr"]
-[ext_resource type="Script" path="res://Scripts/Gun.gd" id="10_gb4as"]
-[ext_resource type="Script" path="res://Scripts/Shield.gd" id="11_10twt"]
-[ext_resource type="Script" path="res://Scripts/SpawnRigidbodies.gd" id="12_hj2kx"]
+[ext_resource type="Script" uid="uid://doxcqaf1be1gq" path="res://Scripts/gun.gd" id="10_gb4as"]
+[ext_resource type="Script" uid="uid://4ahawuyp3r4r" path="res://Scripts/shield.gd" id="11_10twt"]
+[ext_resource type="Script" uid="uid://crj37urjpvfho" path="res://Scripts/spawn_rigidbodies.gd" id="12_hj2kx"]
 [ext_resource type="Texture2D" uid="uid://bc5o1yt1abhi4" path="res://Textures/Skeleton/RibCage.png" id="13_esngb"]
 [ext_resource type="Texture2D" uid="uid://k1dtf3wmsbbh" path="res://Textures/Skeleton/Pelvis.png" id="14_lv8qb"]
 [ext_resource type="Texture2D" uid="uid://cnpaxawdn2w6q" path="res://Textures/Skeleton/Skull1.png" id="15_wrpbu"]
@@ -24,9 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://chpsx4n0tcgbv" path="res://Textures/Skeleton/SmallBone1.png" id="20_nermo"]
 [ext_resource type="Texture2D" uid="uid://buwh5eyv2pk65" path="res://Textures/Skeleton/Gun2.png" id="21_7v78d"]
 [ext_resource type="Texture2D" uid="uid://bal0ujvd1vjnk" path="res://Textures/Skeleton/Hat.png" id="22_m7e1r"]
+[ext_resource type="Script" uid="uid://ck4uhgxgnm5pj" path="res://Scenes/self_damage_invincible_area.gd" id="26_0gysh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48q0s"]
-size = Vector2(166.646, 225.495)
+size = Vector2(778, 1266)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1e0x"]
 resource_local_to_scene = true
@@ -585,9 +587,9 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_gwrdv"]
 resource_name = "leg_walk"
-length = 0.800003
+length = 0.4
 loop_mode = 1
-step = 0.0333333
+step = 0.016
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -595,10 +597,10 @@ tracks/0/path = NodePath("UpperRightLeg/LowerRightLeg:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606)]
+"values": [Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -607,10 +609,10 @@ tracks/1/path = NodePath("UpperRightLeg/LowerRightLeg:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [-1.8815, -0.301817, -0.873888, 0.0197536, -1.36814, -1.8815]
+"values": [-1.8815, -0.301817, -0.873888, 0.0197536, -1.8815]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -619,10 +621,10 @@ tracks/2/path = NodePath("UpperRightLeg:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(120, 177), Vector2(120, 177), Vector2(120, 177), Vector2(120, 177), Vector2(120, 177), Vector2(120, 177)]
+"values": [Vector2(120, 177), Vector2(120, 177), Vector2(120, 177), Vector2(120, 177), Vector2(120, 177)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -631,10 +633,10 @@ tracks/3/path = NodePath("UpperRightLeg:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [-6.20077, -5.80188, -5.53396, -5.24113, -5.74752, -6.20077]
+"values": [-6.20077, -5.80188, -5.53396, -5.24113, -6.20077]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -643,10 +645,10 @@ tracks/4/path = NodePath("UpperLeftLeg:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177)]
+"values": [Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177), Vector2(-115, 177)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -655,10 +657,10 @@ tracks/5/path = NodePath("UpperLeftLeg:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [-1.02571, -1.14797, -0.428162, -0.581136, -0.917104, -1.02571]
+"values": [-1.02571, -1.14797, -0.428162, -0.581136, -1.02571]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -667,10 +669,10 @@ tracks/6/path = NodePath("UpperLeftLeg/LowerLeftLeg:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606)]
+"values": [Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606), Vector2(-114.859, -1.00606)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -679,10 +681,10 @@ tracks/7/path = NodePath("UpperLeftLeg/LowerLeftLeg:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.653674, -0.0212878, -1.78315, -0.152965, -0.653674, -0.653674]
+"values": [-0.653674, -0.0212878, -1.78315, -0.152965, -0.653674]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -691,10 +693,10 @@ tracks/8/path = NodePath(".:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.808333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.00833333, 0.108333, 0.208333, 0.308333, 0.408333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-101.483, -21.365), Vector2(0, -122.848), Vector2(106.825, -10.6824), Vector2(0, -122.848), Vector2(-101.483, -21.365), Vector2(-101.483, -21.365)]
+"values": [Vector2(-101.483, -21.365), Vector2(0, -122.848), Vector2(106.825, -10.6824), Vector2(0, -122.848), Vector2(-101.483, -21.365)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -703,7 +705,7 @@ tracks/9/path = NodePath(".:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(-0.00833333, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(-3.72529e-09, 0.108333, 0.208333, 0.308333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.171801, 0.0, 0.191875, 0.0, -0.171801]
@@ -715,7 +717,7 @@ tracks/10/path = NodePath("UpperLeftLeg/LowerLeftLeg/LeftFoot:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(-0.00833333, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(-3.72529e-09, 0.108333, 0.208333, 0.308333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178)]
@@ -727,7 +729,7 @@ tracks/11/path = NodePath("UpperLeftLeg/LowerLeftLeg/LeftFoot:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(-0.00833333, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(-3.72529e-09, 0.108333, 0.208333, 0.308333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.84846, 1.09949, 1.65737, 1.57817, 1.84846]
@@ -739,7 +741,7 @@ tracks/12/path = NodePath("UpperRightLeg/LowerRightLeg/RightFoot:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(-0.00833333, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(-3.72529e-09, 0.108333, 0.208333, 0.308333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178), Vector2(-137.006, 3.35178)]
@@ -751,7 +753,7 @@ tracks/13/path = NodePath("UpperRightLeg/LowerRightLeg/RightFoot:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(-0.00833333, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0.00833332, 0.108333, 0.208333, 0.308333, 0.408333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.58465, 1.58465, 1.81544, 1.1396, 1.58465]
@@ -759,10 +761,10 @@ tracks/13/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r4ka5"]
 _data = {
-"RESET": SubResource("Animation_1nckb"),
-"leg_idle": SubResource("Animation_4c73j"),
-"leg_jump": SubResource("Animation_wcvcr"),
-"leg_walk": SubResource("Animation_gwrdv")
+&"RESET": SubResource("Animation_1nckb"),
+&"leg_idle": SubResource("Animation_4c73j"),
+&"leg_jump": SubResource("Animation_wcvcr"),
+&"leg_walk": SubResource("Animation_gwrdv")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sugc6"]
@@ -771,19 +773,7 @@ radius = 49.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_x35gg"]
 radius = 71.0657
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qoqap"]
-properties/0/path = NodePath(".:desired_cursor")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6whap"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(249, 315)
-scale = Vector2(0.336042, 0.336042)
 collision_layer = 0
 floor_max_angle = 0.959931
 floor_snap_length = 7.8
@@ -791,17 +781,17 @@ script = ExtResource("1_d83ug")
 move_speed = 500.0
 jump_speed = 900.0
 gravity_multiplier = 3.0
-bullet_vel_multiplier = 700.0
+bullet_vel_multiplier = 500.0
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0.000183105, -113.415)
+position = Vector2(0, -41)
 shape = SubResource("RectangleShape2D_48q0s")
 
-[node name="CharacterRig" type="Node2D" parent="."]
+[node name="CharacterRig" type="Node2D" parent="." node_paths=PackedStringArray("player_parent")]
 position = Vector2(0, -116.057)
-scale = Vector2(0.187223, 0.187223)
 script = ExtResource("2_qtbru")
-hand_radius = 50.0
+player_parent = NodePath("..")
+hand_radius = 750.0
 
 [node name="Torso" type="Sprite2D" parent="CharacterRig"]
 material = SubResource("ShaderMaterial_n1e0x")
@@ -826,6 +816,7 @@ position = Vector2(-0.384644, -53.2776)
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/Head/RigidBodySpawner/Skull"]
 polygon = PackedVector2Array(-90.118, 37.6526, -77.6388, 9.40063, -99.5186, -39.9863, -61.0713, -86.5593, 37.4376, -84.7551, 76.6292, -47.5823, 66.4338, 11.47, 84.7552, 37.438, 60.0618, 48.3779, 57.248, 108.705, -32.605, 100.793, -47.1031, 52.6807)
@@ -848,6 +839,7 @@ position = Vector2(0, 0.000488281)
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="Skull2" type="Sprite2D" parent="CharacterRig/Torso/Head/RigidBodySpawner2/Jaw"]
 rotation = -0.129891
@@ -870,6 +862,7 @@ collision_mask = 9
 gravity_scale = 0.5
 freeze = true
 linear_damp = 2.0
+script = ExtResource("7_p1odr")
 
 [node name="Hat" type="Sprite2D" parent="CharacterRig/Torso/Head/RigidBodySpawner3/Hat"]
 material = SubResource("ShaderMaterial_0qtcf")
@@ -907,6 +900,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm/LowerLeftArm/RigidBodySpawner/RadiusUlna"]
 position = Vector2(0.000488281, -0.00195312)
@@ -929,6 +923,7 @@ position = Vector2(-0.00012207, -0.000244141)
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftArm/RigidBodySpawner/Humerus"]
 position = Vector2(-0.000183105, -0.000671387)
@@ -959,6 +954,7 @@ position = Vector2(-0.00012207, -0.000244141)
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm/RigidBodySpawner/Humerus"]
 position = Vector2(-0.000183105, -0.000671387)
@@ -989,6 +985,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperRightArm/LowerRightArm/RigidBodySpawner/RadiusUlna"]
 position = Vector2(0.000488281, -0.00195312)
@@ -1036,6 +1033,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="HandFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner2/RadiusUlna"]
 position = Vector2(-0.000488281, 0.0012207)
@@ -1059,6 +1057,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner3/RadiusUlna"]
 position = Vector2(0, 0.00112915)
@@ -1083,6 +1082,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner4/RadiusUlna"]
 position = Vector2(0, 0.00112915)
@@ -1107,6 +1107,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner5/RadiusUlna"]
 position = Vector2(0, 0.00112915)
@@ -1131,6 +1132,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/RigidBodySpawner2/RadiusUlna"]
 position = Vector2(0.000488281, -0.00195312)
@@ -1154,6 +1156,7 @@ position = Vector2(-0.00012207, -0.000244141)
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperLeftLeg/RigidBodySpawner2/Humerus"]
 position = Vector2(-0.000183105, -0.000671387)
@@ -1201,6 +1204,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="HandFoot" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner6/RadiusUlna"]
 position = Vector2(-0.000488281, 0.0012207)
@@ -1224,6 +1228,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner7/RadiusUlna"]
 position = Vector2(0, 0.00112915)
@@ -1248,6 +1253,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner8/RadiusUlna"]
 position = Vector2(0, 0.00112915)
@@ -1272,6 +1278,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="SmallBone1" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner9/RadiusUlna"]
 position = Vector2(0, 0.00112915)
@@ -1296,6 +1303,7 @@ rotation = -0.0462877
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="TwoBone" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RigidBodySpawner3/RadiusUlna"]
 position = Vector2(0.000488281, -0.00195312)
@@ -1320,6 +1328,7 @@ rotation = 0.0377862
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="FemurHumerus" type="Sprite2D" parent="CharacterRig/Torso/UpperRightLeg/RigidBodySpawner3/Humerus"]
 position = Vector2(-0.000183105, -0.000671387)
@@ -1343,7 +1352,7 @@ position = Vector2(-221.4, 77.9006)
 scale = Vector2(2.1584, 2.1568)
 
 [node name="TipColorTimer" type="Timer" parent="CharacterRig/Torso/RightGun"]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="RigidBodySpawner3" type="Node2D" parent="CharacterRig/Torso/RightGun"]
@@ -1360,6 +1369,7 @@ rotation = 0.0377862
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="Gun2" type="Sprite2D" parent="CharacterRig/Torso/RightGun/RigidBodySpawner3/Humerus"]
 material = SubResource("ShaderMaterial_sgcv5")
@@ -1385,7 +1395,7 @@ script = ExtResource("10_gb4as")
 position = Vector2(-221.357, 73.959)
 
 [node name="TipColorTimer" type="Timer" parent="CharacterRig/Torso/LeftGun"]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="RigidBodySpawner4" type="Node2D" parent="CharacterRig/Torso/LeftGun"]
@@ -1402,6 +1412,7 @@ rotation = 0.0377862
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="Gun2" type="Sprite2D" parent="CharacterRig/Torso/LeftGun/RigidBodySpawner4/Humerus"]
 material = SubResource("ShaderMaterial_7ttc0")
@@ -1429,6 +1440,7 @@ visible = false
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterRig/Torso/RigidBodySpawner/RibCage"]
 polygon = PackedVector2Array(-153.361, -139.385, 168.007, -132.29, 166.32, 157.753, 11.8342, 211.729, -142.089, 169.025)
@@ -1449,6 +1461,7 @@ visible = false
 collision_layer = 8
 collision_mask = 9
 freeze = true
+script = ExtResource("7_p1odr")
 
 [node name="Pelvis" type="Sprite2D" parent="CharacterRig/Torso/RigidBodySpawner2/Pelvis"]
 rotation = 0.170964
@@ -1460,7 +1473,7 @@ polygon = PackedVector2Array(-126.836, -128.32, -220.215, -80.5889, -220.957, 46
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterRig"]
 root_node = NodePath("../Torso")
 libraries = {
-"": SubResource("AnimationLibrary_r4ka5")
+&"": SubResource("AnimationLibrary_r4ka5")
 }
 
 [node name="Shield" type="Area2D" parent="CharacterRig"]
@@ -1483,45 +1496,16 @@ position = Vector2(0, 111.263)
 scale = Vector2(15.894, 15.894)
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("26_0gysh")
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="CharacterRig/SelfDamageInvincibleArea"]
 position = Vector2(-2.00006, -3.00018)
 shape = SubResource("CircleShape2D_x35gg")
 debug_color = Color(0.862745, 0, 0.866667, 0.0901961)
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="CharacterRig"]
-replication_interval = 0.05
-replication_config = SubResource("SceneReplicationConfig_qoqap")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_6whap")
-
-[connection signal="before_death" from="." to="CharacterRig/Torso/Head/RigidBodySpawner" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/Head/RigidBodySpawner2" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/Head/RigidBodySpawner3" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftArm/LowerLeftArm/RigidBodySpawner" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftArm/RigidBodySpawner" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightArm/RigidBodySpawner" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightArm/LowerRightArm/RigidBodySpawner" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner2" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner3" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner4" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/LeftFoot/RigidBodySpawner5" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/LowerLeftLeg/RigidBodySpawner2" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperLeftLeg/RigidBodySpawner2" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner6" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner7" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner8" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RightFoot/RigidBodySpawner9" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/LowerRightLeg/RigidBodySpawner3" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/UpperRightLeg/RigidBodySpawner3" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/RightGun/RigidBodySpawner3" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/LeftGun/RigidBodySpawner4" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/RigidBodySpawner" method="spawn"]
-[connection signal="before_death" from="." to="CharacterRig/Torso/RigidBodySpawner2" method="spawn"]
 [connection signal="timeout" from="CharacterRig/Torso/RightGun/TipColorTimer" to="CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
 [connection signal="timeout" from="CharacterRig/Torso/LeftGun/TipColorTimer" to="CharacterRig/Torso/RightGun" method="_on_tip_color_timer_timeout"]
 [connection signal="timeout" from="CharacterRig/Torso/LeftGun/TipColorTimer" to="CharacterRig/Torso/LeftGun" method="_on_tip_color_timer_timeout"]
 [connection signal="area_entered" from="CharacterRig/Shield" to="CharacterRig/Shield" method="_on_area_entered"]
-[connection signal="hit_player" from="CharacterRig/Shield" to="." method="death"]
+[connection signal="kill_player" from="CharacterRig/Shield" to="." method="death"]
 [connection signal="timeout" from="CharacterRig/Shield/HitEffectTimer" to="CharacterRig/Shield" method="_on_hit_effect_timer_timeout"]

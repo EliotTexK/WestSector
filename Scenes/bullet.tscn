@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4houbtcrb1wg"]
+[gd_scene load_steps=4 format=3 uid="uid://d4houbtcrb1wg"]
 
-[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_7pbfu"]
+[ext_resource type="Script" uid="uid://cw5pmhpydoqly" path="res://Scripts/bullet.gd" id="1_7pbfu"]
+[ext_resource type="Texture2D" uid="uid://dnkwyvoismn80" path="res://Textures/Shot.png" id="2_oduel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfcyd"]
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_7pbfu")
-grav_multiplier = 0.8
+grav_multiplier = 0.5
 time_multiplier = 2.0
 color = Color(1, 1, 1, 1)
 
@@ -18,6 +19,10 @@ collision_mask = 3
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="Collision"]
 shape = SubResource("CircleShape2D_gfcyd")
+
+[node name="StarSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_oduel")
 
 [connection signal="screen_exited" from="DestroyOnExitScreen" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_exited" from="Collision" to="." method="_on_collision_area_exited"]

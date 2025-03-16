@@ -1,7 +1,8 @@
 extends Node2D
 
-@export var desired_cursor : Vector2 # sync this with some latency
-var cursor : Vector2 # follow desired_cursor so it doesn't look laggy
+@export var player_parent: Node2D # for decoupling
+
+var cursor : Vector2
 
 @export var hand_radius : float
 @onready var torso : Node2D = $Torso
@@ -21,20 +22,17 @@ var lowerArmLength : float
 var total_arm_length : float
 var active_gun : Node2D
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(str(get_parent().name).to_int())
-
 func _ready() -> void:
 	upperArmLength = (lowerLeftArm.global_position - upperLeftArm.global_position).length()
 	lowerArmLength = (leftWrist.global_position - lowerLeftArm.global_position).length()
 	total_arm_length = upperArmLength + lowerArmLength
-		
-func _process(delta) -> void:
-	if is_multiplayer_authority():
-		desired_cursor = get_viewport().get_mouse_position()
-		cursor = desired_cursor
-	else:
-		cursor += (desired_cursor - cursor) * 20 * delta
+	hand_radius = hand_radius * player_parent.scale.x
+
+func _process(_delta: float) -> void:
+	cursor = get_viewport().get_camera_2d().get_global_mouse_position()
+
+# compute inverse kinemtatics
+func _physics_process(delta) -> void:
 	var center_to_cursor = torso.global_position.angle_to_point(cursor)
 	shield.shield_angle = center_to_cursor
 	# if the cursor is left of the character, aim the left gun, etc.
@@ -95,3 +93,6 @@ func _process(delta) -> void:
 	upperLeftArm.global_rotation = t1 - t2
 	lowerLeftArm.look_at(leftWrist.global_position)
 	lowerLeftArm.rotate(PI)
+
+func set_hue_shift(amount: float) -> void:
+	torso.material.set_shader_parameter("Shift_Hue",(amount-1)*0.2)
